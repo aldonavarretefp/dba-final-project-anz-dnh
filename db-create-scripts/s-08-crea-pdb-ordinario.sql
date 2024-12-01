@@ -8,7 +8,7 @@ connect sys/system2 as sysdba
 Prompt creando PDB
 --#TODO
 create pluggable database anzproydnh
-  admin user anz_admin identified by anz_admin
+  admin user anz_admin_dnh identified by anz_admin_dnh
   path_prefix = '/opt/oracle/oradata/FREE'
   file_name_convert = ('/pdbseed/', '/anzproydnh/');
 --TODO#
