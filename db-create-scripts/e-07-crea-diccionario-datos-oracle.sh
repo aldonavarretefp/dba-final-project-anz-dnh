@@ -10,13 +10,21 @@ mkdir /tmp/dd-logs
 
 echo "Ejecutando Perl Script para crear el DD en todos los contenedores"
 #--TODO
+perl -I $ORACLE_HOME/rdbms/admin \
+$ORACLE_HOME/rdbms/admin/catcdb.pl \
+--logDirectory /tmp/dd-logs \
+--logFilename dd.log \
+--logErrorsFilename dderror.log
 
 #TODO--
 
 echo "Listo!!  Verficar la correcta creación del DD"
 
 #--TODO
-
+sqlplus -s sys/system2 as sysdba << EOF
+set serveroutput on
+exec dbms_dictionary_check.full
+EOF
 #TODO--
 
 echo "Listo"

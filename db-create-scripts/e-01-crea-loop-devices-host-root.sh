@@ -6,16 +6,16 @@
 set -e
 
 #!/bin/bash
-diplo_dir="/unam/bda/proyecto-final"
+dba_proyecto_final_dir="/unam/bda/proyecto-final"
 
 echo "1. Creando directorio disk-images"
 
 #--TODO
-mkdir -p "${diplo_dir}/disk-images"
+mkdir -p "${dba_proyecto_final_dir}/disk-images"
 #TODO--
 
 echo "2,3. Crear archivos img"
-cd "${diplo_dir}/disk-images"
+cd "${dba_proyecto_final_dir}/disk-images"
 
 #--TODO
 if [ -f disk1.img ]; then
@@ -60,18 +60,18 @@ mkfs.ext4 disk3.img
 
 echo "7. Creando directorios para usarse como puntos de montaje"
 #TODO--
-mkdir -p "${diplo_dir}/disk/d01"
-mkdir -p "${diplo_dir}/disk/d02"
-mkdir -p "${diplo_dir}/disk/d03"
+mkdir -p "${dba_proyecto_final_dir}/disk/d01"
+mkdir -p "${dba_proyecto_final_dir}/disk/d02"
+mkdir -p "${dba_proyecto_final_dir}/disk/d03"
 #TODO--
 
 echo "Editando archivo /etc/fstab"
 
 #--TODO
-echo "# loop devices para el diplomado" >> /etc/fstab
-echo "/unam/diplo-bd/disk-images/disk1.img /unam/diplo-bd/disk/d01 auto loop 0 0" >> /etc/fstab
-echo "/unam/diplo-bd/disk-images/disk2.img /unam/diplo-bd/disk/d02 auto loop 0 0" >> /etc/fstab
-echo "/unam/diplo-bd/disk-images/disk3.img /unam/diplo-bd/disk/d03 auto loop 0 0" >> /etc/fstab
+echo "# loop devices para el el proyecto" >> /etc/fstab
+echo "${dba_proyecto_final_dir}/disk-images/disk1.img ${dba_proyecto_final_dir}/disk/d01 auto loop 0 0" >> /etc/fstab
+echo "${dba_proyecto_final_dir}/disk-images/disk2.img ${dba_proyecto_final_dir}/disk/d02 auto loop 0 0" >> /etc/fstab
+echo "${dba_proyecto_final_dir}/disk-images/disk3.img ${dba_proyecto_final_dir}/disk/d03 auto loop 0 0" >> /etc/fstab
 echo "Listo!"
 
 

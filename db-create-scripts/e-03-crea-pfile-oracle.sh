@@ -28,9 +28,9 @@ echo \
 db_name='${ORACLE_SID}'
 memory_target=768M
 control_files=(
-    /unam/diplo-bd/disks/d01/app/oracle/oradata/${ORACLE_SID^^}/control01.ctl,
-    /unam/diplo-bd/disks/d02/app/oracle/oradata/${ORACLE_SID^^}/control02.ctl,
-    /unam/diplo-bd/disks/d03/app/oracle/oradata/${ORACLE_SID^^}/control03.ctl
+    /unam/bda/proyecto-final/disks/d01/app/oracle/oradata/${ORACLE_SID^^}/control01.ctl,
+    /unam/bda/proyecto-final/disks/d02/app/oracle/oradata/${ORACLE_SID^^}/control02.ctl,
+    /unam/bda/proyecto-final/disks/d03/app/oracle/oradata/${ORACLE_SID^^}/control03.ctl
 )
 db_domain=fi.unam
 enable_pluggable_database=true
