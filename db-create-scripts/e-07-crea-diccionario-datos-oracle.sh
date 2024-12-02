@@ -3,6 +3,8 @@
 #@Fecha creación:  dd/mm/yyyy
 #@Descripción:  Creación del diccionario de datos
 
+set -e
+
 echo "Creación del diccionario de datos"
 
 echo "Creando archivo de bitacoras"

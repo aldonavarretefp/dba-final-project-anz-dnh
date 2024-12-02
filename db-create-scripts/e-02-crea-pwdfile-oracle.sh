@@ -12,6 +12,7 @@ echo "Verificando la existencia del archivo"
 #--TODO
 if [ -f "${archivo_pwd}" ]; then
     echo "El archivo ${archivo_pwd} ya existe"
+    exit 1
 else
     echo "El archivo ${archivo_pwd} no existe"
 fi

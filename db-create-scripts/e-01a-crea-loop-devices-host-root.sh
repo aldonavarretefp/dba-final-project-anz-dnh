@@ -17,6 +17,11 @@ done
 
 mkdir -p "${dba_proyecto_final_dir}/d20"
 
+echo '1.1. Cambiando los permisos para que se pueda acceder a los directorios'
+chmod 777 "${dba_proyecto_final_dir}/d1*"
+chmod 777 "${dba_proyecto_final_dir}/d20"
+
+
 echo "2. Mostrando la creación de los directorios"
 
 ls -l "${dba_proyecto_final_dir}"
