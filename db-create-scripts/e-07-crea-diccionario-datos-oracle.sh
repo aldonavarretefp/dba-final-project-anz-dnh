@@ -22,11 +22,11 @@ $ORACLE_HOME/rdbms/admin/catcdb.pl \
 
 echo "Listo!!  Verficar la correcta creación del DD"
 
-#--TODO
-sqlplus -s sys/system1 as sysdba << EOF
-set serveroutput on
-exec dbms_dictionary_check.full
-EOF
-#TODO--
+# #--TODO
+# sqlplus -s sys/system1 as sysdba << EOF
+# set serveroutput on
+# exec dbms_dictionary_check.full
+# EOF
+# #TODO--
 
 echo "Listo"
