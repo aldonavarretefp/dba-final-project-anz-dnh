@@ -10,4 +10,4 @@ docker run -i -t \
 --expose 1521 \
 --expose 5500 \
 --shm-size=2g \
--e DISPLAY=$DISPLAY ol-anz-dnh:1.0 bash
+-e DISPLAY=$DISPLAY ol-dnh:1.0 bash
