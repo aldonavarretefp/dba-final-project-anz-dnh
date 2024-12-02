@@ -1,20 +1,25 @@
 
+connect sys/Hola1234* as sysdba;
+
+startup nomount;
+
+whenever sqlerror exit rollback;
 
 create database free
   user sys identified by system1
   user system identified by system1
   logfile group 1 (
-    '/unam/bda/proyecto-final/disks/d01/app/oracle/oradata/FREE/redo01a.log',
-    '/unam/bda/proyecto-final/disks/d02/app/oracle/oradata/FREE/redo01b.log',
-    '/unam/bda/proyecto-final/disks/d03/app/oracle/oradata/FREE/redo01c.log') size 50m blocksize 512,
+    '/unam/bda/proyecto-final/disk/d01/app/oracle/oradata/FREE/redo01a.log',
+    '/unam/bda/proyecto-final/disk/d02/app/oracle/oradata/FREE/redo01b.log',
+    '/unam/bda/proyecto-final/disk/d03/app/oracle/oradata/FREE/redo01c.log') size 50m blocksize 512,
   group 2 (
-    '/unam/bda/proyecto-final/disks/d01/app/oracle/oradata/FREE/redo02a.log',
-    '/unam/bda/proyecto-final/disks/d02/app/oracle/oradata/FREE/redo02b.log',
-    '/unam/bda/proyecto-final/disks/d03/app/oracle/oradata/FREE/redo02c.log') size 50m blocksize 512,
+    '/unam/bda/proyecto-final/disk/d01/app/oracle/oradata/FREE/redo02a.log',
+    '/unam/bda/proyecto-final/disk/d02/app/oracle/oradata/FREE/redo02b.log',
+    '/unam/bda/proyecto-final/disk/d03/app/oracle/oradata/FREE/redo02c.log') size 50m blocksize 512,
   group 3 (
-    '/unam/bda/proyecto-final/disks/d01/app/oracle/oradata/FREE/redo03a.log',
-    '/unam/bda/proyecto-final/disks/d02/app/oracle/oradata/FREE/redo03b.log',
-    '/unam/bda/proyecto-final/disks/d03/app/oracle/oradata/FREE/redo03c.log') size 50m blocksize 512
+    '/unam/bda/proyecto-final/disk/d01/app/oracle/oradata/FREE/redo03a.log',
+    '/unam/bda/proyecto-final/disk/d02/app/oracle/oradata/FREE/redo03b.log',
+    '/unam/bda/proyecto-final/disk/d03/app/oracle/oradata/FREE/redo03c.log') size 50m blocksize 512
   maxloghistory 1
   maxlogfiles 16
   maxlogmembers 3
