@@ -7,11 +7,11 @@ spool anz-e-01-habilitar-fra-ordinario.txt
 
 Prompt 1. Conectando como sys empleando archivo de passwords
 
-connect sys/Hola1234* as sysdba;
+connect sys/system1 as sysdba;
 
 Prompt 2. Habilitando la FRA...
 alter system set db_recovery_file_dest_size = 10G scope=both;
-alter system set db_recovery_file_dest = '/opt/oracle/oradata/FREE/fast_recovery_area' scope=both;
+alter system set db_recovery_file_dest = '/opt/oracle/oradata/FREE/fast-recovery-area' scope=both;
 alter system set db_flashback_retention_target = 1440 scope=both; --Este valor es en minutos
 
 Prompt 3. Reiniciando la instancia para que los cambios tengan efecto...
@@ -28,5 +28,6 @@ show parameter db_flashback_retention_target;
 
 Pause Presiona enter para continuar...
 
-
-
+Prompt Script finalizado. Revisa el archivo anz-e-01-habilitar-fra-ordinario.txt para ver los resultados.
+spool off;
+exit;

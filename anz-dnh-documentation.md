@@ -168,19 +168,20 @@ $$
 
 #### 1.3.11. Modo archivelog
 - La ubicación propuesta para las dos ubicaciónes es
-   - TODO: Ubicación
-   - TODO: Ubicacíon
+   - La ubicación del disco dedicado que es `/unam/bda/proyecto-final/archivelogs/FREE/disk_a`
+   - FRA `/unam/bda/proyecto-final/fast-recovery-area`
 
 - Tip: Los discos donde se almacene la copia que no está en la FRA debería ser
 dedicado.
-1.3.12. Planeación del esquema de respaldos.
+
+#### 1.3.12. Planeación del esquema de respaldos. TODO
 Diseñar la estrategia que se empleará para realizar los respaldos de la base de datos. Esta
 estrategia deberá incluir:
-● Tipos de backups a realizar
-● Frecuencia de repetición
-● Ubicaciones de respaldo (FRA)
-● Política de retención de backups.
-● Tamaño total en espacio en disco disponible para realizar backups.
+- Tipos de backups a realizar
+- Frecuencia de repetición
+- Ubicaciones de respaldo (FRA)
+- Política de retención de backups.
+- Tamaño total en espacio en disco disponible para realizar backups.
 
 TODO: 
 Para nuestros respaldos hemos decidido...
@@ -188,12 +189,8 @@ Para nuestros respaldos hemos decidido...
 - Verificar los scripts en nuestras carpetas
 
 1.3.15. Simulación de la carga diaria.
-● Generar Scripts que simulen la generación de datos de REDO los cuales
-representarán la carga diaria de una base productiva. Se recomienda tomar como
-base los scripts proporcionados en temas anteriores. Como mínimo se deberán
-generar aproximadamente 30 MB de datos REDO. Este valor también deberá ser
-considerado para decidir el tamaño de los grupos de REDO al momento de crear la
-base de datos.
+- Generar Scripts que simulen la generación de datos de REDO los cuales
+representarán la carga diaria de una base productiva. Se recomienda tomar como base los scripts proporcionados en temas anteriores. Como mínimo se deberán generar aproximadamente 30 MB de datos REDO. Este valor también deberá ser considerado para decidir el tamaño de los grupos de REDO al momento de crear la base de datos.
 ● Realizar algunos ciclos de generación de datos REDO, y posteriormente hacer
 respaldos para comprobar su correcto funcionamiento.
 ● Ejecutar los comandos necesarios para liberar espacio en disco considerando
