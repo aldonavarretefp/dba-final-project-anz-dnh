@@ -57,15 +57,14 @@ El encabezado eligo es el siguiente para todos los scripts:
 |                   |             |
 
 ### 1.3.2. Configuraciones iniciales para crear la nueva base de datos
-- Crear una nueva base de datos empleando como nombre `<iniciales>proy`.
-  - `<Iniciales>` corresponden con los 2 primeros caracteres del apellido paterno de cada integrante. Si el proyecto se realiza de forma individual, emplear las primeras 2 letras del apellido paterno y las 2 primeras letras del apellido materno.
+- Crear una nueva base de datos empleando como nombre `<iniciales>proy<iniciales>` (para nuestro caso, sería `naproynu`).
 - Si el espacio en disco resulta ser un impedimento para crear esta nueva base de datos, eliminar la base de datos 1 creada al inicio del semestre. Se recomienda contar con 10 GB de espacio para evitar problemas durante el desarrollo del proyecto.
 
 Proponer una configuración inicial y llenar la siguiente tabla:
 
 | Configuración | Descripción y/o configuración |
 |---------------|------------------------------|
-| Número y ubicación de los archivos de control | |
+| Número y ubicación de los archivos de control | Los archivos de control no deberían ubicarse en los mismos discos donde se encuentran los Redo Logs y data files. Los guardaremos en la FRA. |
 | Propuesta de grupos de REDO | Un miembro de cada grupo deberá ubicarse en la FRA. No olvidar: Los data files no deberían ubicarse en los mismos discos donde se encuentran los Redo Logs y archivos de control. |
 | Propuesta de juego de caracteres | |
 | Tamaño del bloque de datos | |
@@ -146,7 +145,7 @@ A partir del modelo relacional generado anteriormente, realizar las siguientes a
 | UNIQUE             | `<nombre_tabla>_<nombre_columna>_uk` |
 | PRIMARY KEY        | `<nombre_tabla>_<nombre_columna>_pk` |
 | FOREIGN KEY        | `<nombre_tabla_hija>_<nombre_columna>_fk` |
-| CHECK              | `<nombre_tabla>_<nombre_columna>_chk` |
+| CHECK              | `<nombre_tabla>_<nombre_columna>_<chk>` |
 
 - Generar el código SQL empleando ER-Studio.
 - Editar el script generado para realizar las asignaciones de tablespaces tanto de
@@ -173,8 +172,7 @@ $$
 
 - Tip: Los discos donde se almacene la copia que no está en la FRA debería ser
 dedicado.
-
-#### 1.3.12. Planeación del esquema de respaldos. TODO
+##### 1.3.12. Planeación del esquema de respaldos.
 Diseñar la estrategia que se empleará para realizar los respaldos de la base de datos. Esta
 estrategia deberá incluir:
 - Tipos de backups a realizar
@@ -183,27 +181,51 @@ estrategia deberá incluir:
 - Política de retención de backups.
 - Tamaño total en espacio en disco disponible para realizar backups.
 
+- Por la naturaleza de las pdbs en las que estamos desarrollando el proyecto y se parece a un ambiente de Uber Eats, hemos propuesto realizar backups incrementales de las pdbs.
+
+- Para la frecuencia de repetición hemos decidido realizar backups incrementales diarios de las pdbs. Esto con el fin de tener un respaldo diario de los datos que se generan en la base de datos.
+
+- Para la ubicación de los respaldos hemos decidido almacenarlos en la FRA. Esto con el fin de tener un respaldo en caso de que se pierda la información de la base de datos.
+
+- Para la política de retención de backups hemos decidido mantener los backups incrementales diarios por 7 días. Recordando que una política de retención de backups es aquella que define cuánto tiempo se mantendrán los backups en el sistema. Nosotros 
+
+```sql
+configure retention policy.
+
 TODO: 
 Para nuestros respaldos hemos decidido...
 
 - Verificar los scripts en nuestras carpetas
 
-1.3.15. Simulación de la carga diaria.
-- Generar Scripts que simulen la generación de datos de REDO los cuales
-representarán la carga diaria de una base productiva. Se recomienda tomar como base los scripts proporcionados en temas anteriores. Como mínimo se deberán generar aproximadamente 30 MB de datos REDO. Este valor también deberá ser considerado para decidir el tamaño de los grupos de REDO al momento de crear la base de datos.
-● Realizar algunos ciclos de generación de datos REDO, y posteriormente hacer
-respaldos para comprobar su correcto funcionamiento.
-● Ejecutar los comandos necesarios para liberar espacio en disco considerando
-archivos obsoletos.
-● Llenar la siguiente tabla:
-Programación de respaldos.
-Fecha y
-hora
-Datos REDO
-producidos (MB)
-Fecha de
-Respaldo
-Tipo de
-backup
-Espacio requerido por
-el backup
+#### 1.3.15. Simulación de la carga diaria
+
+- Generar Scripts que simulen la generación de datos de REDO los cuales representarán la carga diaria de una base productiva. Se recomienda tomar como base los scripts proporcionados en temas anteriores. Como mínimo se deberán generar aproximadamente 30 MB de datos REDO. Este valor también deberá ser considerado para decidir el tamaño de los grupos de REDO al momento de crear la base de datos.
+- Realizar algunos ciclos de generación de datos REDO, y posteriormente hacer respaldos para comprobar su correcto funcionamiento.
+- Ejecutar los comandos necesarios para liberar espacio en disco considerando archivos obsoletos.
+- Llenar la siguiente tabla:
+
+##### Programación de respaldos
+
+| Fecha y hora | Datos REDO producidos (MB) | Fecha de Respaldo | Tipo de backup | Espacio requerido por el backup |
+|--------------|-----------------------------|-------------------|----------------|---------------------------------|
+|              |                             |                   |                |                                 |
+
+> 8.4.1.6.Respaldar archive redo logs
+El siguiente comando realiza un respaldo completo de la base de datos, realiza switch de
+los Redo logs e incluye los archived redo logs en el backup.
+backup database plus archivelog;
+8.4.1.7. Respaldar tablespaces
+backup device type disk tablespace users, tools;
+8.4.1.8.Respaldar datafiles
+backup device type sbt datafile 1,2,3,4 datafilecopy'/tmp/system01.dbf';
+8.4.1.9.Respaldar el archivo de control
+En caso de que la configuración configure controlfile autobackup no esté habilitada, se
+deben emplear alguna de las siguientes instrucciones para incluirlo en un backup.
+backup current controlfile
+Jorge A. Rodríguez C. jorgerdc@gmail.com 24
+Material de apoyo FI UNAM
+backup device type sbt tablespace users include current controlfile;
+backup as copy current controlfile format'/tmp/control01.ctl';
+backup as copy current controlfile format'/tmp/control01.ctl';
+backup device type sbt controlfilecopy'/tmp/control01.ctl';
+8.4.1.10. backup device type sbt spfile;
