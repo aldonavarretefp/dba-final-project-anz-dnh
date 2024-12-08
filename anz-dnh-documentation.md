@@ -78,8 +78,8 @@ Con base a los requerimientos y a las características del caso de estudio, prop
 
 | Nombre del módulo | Descripción | Usuario |
 | ----------------- | ----------- | ------- |
-|                   |             |         |
-|                   |             |         |
+| Gestión de Usuarios y pedidos | Contiene las tablas relacionadas con los usuarios (clientes, proveedores y repartidores), pedidos, y el seguimiento de entregas. |         |
+| Gestión Financiera y Multimedia | Contiene las tablas para pagos, datos bancarios, y almacenamiento de multimedia. |         |
 
 ### 1.3.4. Esquemas por módulo
 
@@ -87,8 +87,28 @@ Con base al modelo relacional realizado anteriormente realizar una distribución
 
 | Nombre de la tabla | Nombre del módulo |
 | ------------------ | ----------------- |
-|                    |                   |
-|                    |                   |
+| USER | Gestión de Usuarios y pedidos |
+| CLIENT | Gestión de Usuarios y pedidos |
+| DEALER | Gestión de Usuarios y pedidos |
+| PROVIDER | Gestión de Usuarios y pedidos |
+| ORDER | Gestión de Usuarios y pedidos |
+| ORDER_RECEIPT | Gestión de Usuarios y pedidos |
+| ORDER_REVIEW | Gestión de Usuarios y pedidos |
+| ORDER_STATUS | Gestión de Usuarios y pedidos |
+| ORDER_STATUS_HISTORY | Gestión de Usuarios y pedidos |
+| DISH | Gestión de Usuarios y pedidos |
+| ORDER_DISH | Gestión de Usuarios y pedidos |
+| DISH_REVIEW | Gestión de Usuarios y pedidos |
+| DISH_TYPE | Gestión de Usuarios y pedidos |
+| DISH_PRICE_HISTORY | Gestión de Usuarios y pedidos |
+| LOCATION_LOG | Gestión de Usuarios y pedidos |
+| PROVIDER_GALLERY | Gestión Financiera y Multimedia |
+| PROVIDER_PAYMENT | Gestión Financiera y Multimedia |
+| PROVIDER_BANK_DATA | Gestión Financiera y Multimedia |
+| DEALER_BANK_DATA | Gestión Financiera y Multimedia |
+| BANK | Gestión Financiera y Multimedia |
+| DEALER_PAYMENT | Gestión Financiera y Multimedia |
+| DISH_GALLERY | Gestión Financiera y Multimedia |
 
 ### 1.3.5. Esquema de indexado
 
@@ -96,8 +116,34 @@ Con base a las reglas de negocio del caso de estudio asignado generar una lista 
 
 | Módulo | Nombre de la tabla | Nombre del índice | Tipo | Propósito |
 |--------|--------------------|-------------------|------|-----------|
-|        |                    |                   |      |           |
-
+| Gestión de Usuarios y pedidos | USER | user_pk | Primary Key | Llave primaria tabla USER |
+| Gestión de Usuarios y pedidos | CLIENT | client_pk | Primary Key | Llave primaria tabla CLIENT |
+| Gestión de Usuarios y pedidos | CLIENT |  |  |  |
+| Gestión de Usuarios y pedidos |  |  |  |  |
+| Gestión de Usuarios y pedidos |  |  |  |  |
+| Gestión de Usuarios y pedidos |  |  |  |  |
+|  |  |  |  |  |
+|  |  |  |  |  |
+|  |  |  |  |  |
+|  |  |  |  |  |
+|  |  |  |  |  |
+|  |  |  |  |  |
+|  |  |  |  |  |
+|  |  |  |  |  |
+|  |  |  |  |  |
+|  |  |  |  |  |
+|  |  |  |  |  |
+|  |  |  |  |  |
+|  |  |  |  |  |
+|  |  |  |  |  |
+|  |  |  |  |  |
+|  |  |  |  |  |
+|  |  |  |  |  |
+|  |  |  |  |  |
+|  |  |  |  |  |
+|  |  |  |  |  |
+|  |  |  |  |  |
+ 
 ### 1.3.6. Diseño de tablespaces
 
 Con base a los requerimientos del caso de estudio, proponer un diseño físico en el que se describen los tablespaces que serán creados para soportar la operación de la base de datos para cada uno de los módulos. 
