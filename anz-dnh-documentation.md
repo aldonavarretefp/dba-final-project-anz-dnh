@@ -84,8 +84,8 @@ Con base a los requerimientos y a las características del caso de estudio, prop
 
 | Nombre del módulo | Descripción | Usuario |
 | ----------------- | ----------- | ------- |
-| Gestión de Usuarios y pedidos | Contiene las tablas relacionadas con los usuarios (clientes, proveedores y repartidores), pedidos, y el seguimiento de entregas. |         |
-| Gestión Financiera y Multimedia | Contiene las tablas para pagos, datos bancarios, y almacenamiento de multimedia. |         |
+| Gestión de Usuarios y Transacciones | Contiene las tablas relacionadas con los usuarios (clientes, proveedores y repartidores) y sus transacciones. |         |
+| Gestión de Órdenes y Platos | Contiene las tablas para órdenes y su relación con los platillos. |         |
 
 ### 1.3.4. Esquemas por módulo
 
@@ -93,28 +93,28 @@ Con base al modelo relacional realizado anteriormente realizar una distribución
 
 | Nombre de la tabla | Nombre del módulo |
 | ------------------ | ----------------- |
-| USER | Gestión de Usuarios y pedidos |
-| CLIENT | Gestión de Usuarios y pedidos |
-| DEALER | Gestión de Usuarios y pedidos |
-| PROVIDER | Gestión de Usuarios y pedidos |
-| ORDER | Gestión de Usuarios y pedidos |
-| ORDER_RECEIPT | Gestión de Usuarios y pedidos |
-| ORDER_REVIEW | Gestión de Usuarios y pedidos |
-| ORDER_STATUS | Gestión de Usuarios y pedidos |
-| ORDER_STATUS_HISTORY | Gestión de Usuarios y pedidos |
-| DISH | Gestión de Usuarios y pedidos |
-| ORDER_DISH | Gestión de Usuarios y pedidos |
-| DISH_REVIEW | Gestión de Usuarios y pedidos |
-| DISH_TYPE | Gestión de Usuarios y pedidos |
-| DISH_PRICE_HISTORY | Gestión de Usuarios y pedidos |
-| LOCATION_LOG | Gestión de Usuarios y pedidos |
-| PROVIDER_GALLERY | Gestión Financiera y Multimedia |
-| PROVIDER_PAYMENT | Gestión Financiera y Multimedia |
-| PROVIDER_BANK_DATA | Gestión Financiera y Multimedia |
-| DEALER_BANK_DATA | Gestión Financiera y Multimedia |
-| BANK | Gestión Financiera y Multimedia |
-| DEALER_PAYMENT | Gestión Financiera y Multimedia |
-| DISH_GALLERY | Gestión Financiera y Multimedia |
+| USER | Gestión de Usuarios y Transacciones |
+| CLIENT | Gestión de Usuarios y Transacciones | 
+| DEALER | Gestión de Usuarios y Transacciones | 
+| DEALER_BANK_DATA | Gestión de Usuarios y Transacciones | 
+| DEALER_PAYMENT | Gestión de Usuarios y Transacciones | 
+| LOCATION_LOG | Gestión de Usuarios y Transacciones | 
+| PROVIDER | Gestión de Usuarios y Transacciones | 
+| PROVIDER_BANK_DATA | Gestión de Usuarios y Transacciones | 
+| PROVIDER_GALLERY | Gestión de Usuarios y Transacciones | 
+| PROVIDER_PAYMENT | Gestión de Usuarios y Transacciones |
+| BANK | Gestión de Usuarios y Transacciones |
+| CARD | Gestión de Usuarios y Transacciones | 
+| DISH | Gestión de Órdenes y Platos |
+| DISH_GALLERY | Gestión de Órdenes y Platos |
+| DISH_PRICE_HISTORY | Gestión de Órdenes y Platos |
+| DISH_REVIEW | Gestión de Órdenes y Platos |
+| DISH_TYPE | Gestión de Órdenes y Platos |
+| ORDER | Gestión de Órdenes y Platos |
+| ORDER_DISH | Gestión de Órdenes y Platos |
+| ORDER_REVIEW | Gestión de Órdenes y Platos |
+| ORDER_STATUS | Gestión de Órdenes y Platos |
+| ORDER_STATUS_HISTORY | Gestión de Órdenes y Platos |
 
 ### 1.3.5. Esquema de indexado
 
