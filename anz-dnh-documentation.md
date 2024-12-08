@@ -51,10 +51,17 @@ El encabezado eligo es el siguiente para todos los scripts:
 
 - Una vez que el proyecto haya sido concluido, generar una tabla con el resumen de todos los scripts creados.
 
-| Nombre del script | Descripción |
-|-------------------|-------------|
-|                   |             |
-|                   |             |
+| Nombre del script                | Descripción                                |
+|----------------------------------|--------------------------------------------|
+| e-00-crea-contenedor.sh          | Creación del contenedor base Docker.       |
+| e-01-crea-loop-devices-host-root.sh | Creación de dispositivos de loop en el host. |
+| e-02-crea-pwdfile-oracle.sh      | Creación del archivo de contraseñas para Oracle. |
+| e-03-crea-pfile-oracle.sh        | Creación del archivo PFILE con configuración básica. |
+| e-04-crea-spfile-ordinario.sql   | Creación del archivo SPFILE a partir del PFILE. |
+| e-05-crea-directorios-root.sh    | Configuración de directorios para data files y redo logs. |
+| e-06-crea-bd-ordinario.sql       | Creación de la base de datos Oracle.       |
+| e-07-crea-diccionario-datos-oracle.sh | Creación del diccionario de datos Oracle. |
+| s-08-crea-pdb-ordinario.sql      | Creación de la base de datos pluggable (PDB). |
 
 ### 1.3.2. Configuraciones iniciales para crear la nueva base de datos
 - Crear una nueva base de datos empleando como nombre `<iniciales>proy<iniciales>` (para nuestro caso, sería `naproynu`).
@@ -66,8 +73,8 @@ Proponer una configuración inicial y llenar la siguiente tabla:
 |---------------|------------------------------|
 | Número y ubicación de los archivos de control | Los archivos de control no deberían ubicarse en los mismos discos donde se encuentran los Redo Logs y data files. Los guardaremos en la FRA. |
 | Propuesta de grupos de REDO | Un miembro de cada grupo deberá ubicarse en la FRA. No olvidar: Los data files no deberían ubicarse en los mismos discos donde se encuentran los Redo Logs y archivos de control. |
-| Propuesta de juego de caracteres | |
-| Tamaño del bloque de datos | |
+| Propuesta de juego de caracteres | El juego de caracteres deberá ser `AL32UTF8`. Debido a que se trata de un proyecto de base de datos para un sistema de pedidos de comida, es importante que se soporten caracteres especiales. |
+| Tamaño del bloque de datos | Se recomienda emplear un tamaño de bloque de 8 KB. |
 | Lista de parámetros que serán configurados al crear la base de datos | Especificar nombre y valor. |
 | Archivo de passwords | Indicar los usuarios que contendrá este archivo de forma inicial. Como requisito indispensable, deberá existir un usuario diferente a `sys` que será el encargado de realizar la administración de backups. |
 
@@ -197,6 +204,9 @@ A partir del modelo relacional generado anteriormente, realizar las siguientes a
 - Editar el script generado para realizar las asignaciones de tablespaces tanto de
 tablas como para índices, PKs, índices tipo LOB.
 
+### 1.3.9.Modos de conexión.
+- Realizar las configuraciones necesarias de tal forma que un usuario pueda conectarse a la instancia ya sea en modo compartido o en modo dedicado o a través de un pool de conexiones. La configuración por defecto deberá ser modo dedicado.
+
 ### 1.3.10. Habilitar la FRA
 - Habilitar la FRA, realizar un cálculo estimado de su tamaño con base a la cantidad de datos que se pretenden almacenar (ver siguientes secciones).
 
@@ -221,26 +231,21 @@ dedicado.
 ##### 1.3.12. Planeación del esquema de respaldos.
 Diseñar la estrategia que se empleará para realizar los respaldos de la base de datos. Esta
 estrategia deberá incluir:
-- Tipos de backups a realizar
+**Requerimientos**
+- Tipos de backups a realizar  
 - Frecuencia de repetición
 - Ubicaciones de respaldo (FRA)
 - Política de retención de backups.
 - Tamaño total en espacio en disco disponible para realizar backups.
 
+**Propuesta**
 - Por la naturaleza de las pdbs en las que estamos desarrollando el proyecto y se parece a un ambiente de Uber Eats, hemos propuesto realizar backups incrementales de las pdbs.
-
 - Para la frecuencia de repetición hemos decidido realizar backups incrementales diarios de las pdbs. Esto con el fin de tener un respaldo diario de los datos que se generan en la base de datos.
-
 - Para la ubicación de los respaldos hemos decidido almacenarlos en la FRA. Esto con el fin de tener un respaldo en caso de que se pierda la información de la base de datos.
-
-- Para la política de retención de backups hemos decidido mantener los backups incrementales diarios por 7 días. Recordando que una política de retención de backups es aquella que define cuánto tiempo se mantendrán los backups en el sistema. Nosotros 
-
+- Para la política de retención de backups hemos decidido mantener los backups incrementales diarios por 7 días. Recordando que una política de retención de backups es aquella que define cuánto tiempo se mantendrán los backups en el sistema. Nosotros hemos decidido mantener los backups incrementales diarios por 7 días.
 ```sql
 configure retention policy.
-
-TODO: 
-Para nuestros respaldos hemos decidido...
-
+```
 - Verificar los scripts en nuestras carpetas
 
 #### 1.3.15. Simulación de la carga diaria
@@ -268,8 +273,6 @@ backup device type sbt datafile 1,2,3,4 datafilecopy'/tmp/system01.dbf';
 En caso de que la configuración configure controlfile autobackup no esté habilitada, se
 deben emplear alguna de las siguientes instrucciones para incluirlo en un backup.
 backup current controlfile
-Jorge A. Rodríguez C. jorgerdc@gmail.com 24
-Material de apoyo FI UNAM
 backup device type sbt tablespace users include current controlfile;
 backup as copy current controlfile format'/tmp/control01.ctl';
 backup as copy current controlfile format'/tmp/control01.ctl';
