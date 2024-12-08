@@ -6,9 +6,6 @@ Prompt 0. Creando spool
 spool anz-e-04-crea-spfile-ordinario.txt
 
 Prompt 1. Conectando como sys empleando archivo de passwords 
-
-whenever sqlerror exit rollback;
-
 --#TODO
 connect sys/Hola1234* as sysdba;
 --TODO#
