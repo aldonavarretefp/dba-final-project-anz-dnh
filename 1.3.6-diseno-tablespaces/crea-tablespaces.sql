@@ -5,7 +5,10 @@
 Prompt Creando tablespaces para el proyecto final
 
 Prompt conectando como sysdba
-connect sys/system as sysdba
+connect sys/system1 as sysdba
+
+whenever sqlerror exit rollback
+set serveroutput on
 
 ----------------------------------- Modulo 1. Usuarios y Transacciones -----------------------------------
 ----- TS_USERS_DATA 
