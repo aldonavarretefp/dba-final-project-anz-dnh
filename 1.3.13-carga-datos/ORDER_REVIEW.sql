@@ -1,3 +1,12 @@
+connect sys/system1 as sysdba
+
+whenever sqlerror exit rollback
+set serveroutput on
+
+----------------------------------- Modulo 2. Órdenes y platos -----------------------------------
+alter session set container = naproynu_modulo_2;
+connect usermod2/usermod2 
+
 insert into ORDER_REVIEW (ORDER_REVIEW_ID, ORDER_REVIEW_RATE, ORDER_REVIEW_COMMENT, ORDER_REVIEW_ORDER_ID, ORDER_REVIEW_USER_ID) values (1, 5, 'rJnzOYGtXchPiqWfLPMVVAjhopLCcrvoBGdHUnbSyZTsPXDejnnRIhMTEQDcswNYgfiebotDUtshxIDkjSDvLLZENcTqAkAMZyZz', 1, 1);
 insert into ORDER_REVIEW (ORDER_REVIEW_ID, ORDER_REVIEW_RATE, ORDER_REVIEW_COMMENT, ORDER_REVIEW_ORDER_ID, ORDER_REVIEW_USER_ID) values (2, 1, 'qSjzAPaLAGlkOmtkrSfbyuRVrAFriGzNibGiYoLHyhYdnGnpprrmmSAcPxiGSHbGIfXTkemWMwMFIvCvnCNIscNXYYoQvztQXjew', 2, 2);
 insert into ORDER_REVIEW (ORDER_REVIEW_ID, ORDER_REVIEW_RATE, ORDER_REVIEW_COMMENT, ORDER_REVIEW_ORDER_ID, ORDER_REVIEW_USER_ID) values (3, 1, 'RwCMUlFuvpZxSjGPsfAkaYrRDzhiYtQyrNVADKplIcJIYKJvlMkzrhOWzVojxKcZEvDVAXRvTbshAMGrvAMRNdaZeiOcpsGWofEj', 3, 3);

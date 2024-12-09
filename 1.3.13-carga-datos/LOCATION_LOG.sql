@@ -1,3 +1,12 @@
+connect sys/system1 as sysdba
+
+whenever sqlerror exit rollback
+set serveroutput on
+
+----------------------------------- Modulo 1. Usuarios y Transacciones -----------------------------------
+alter session set container = naproynu_modulo_1;
+connect usermod1/usermod1 
+
 insert into LOCATION_LOG (LOCATION_LOG_ID, LOCATION_LOG_TIMESTAMP, LOCATION_LOG_LATITUDE, LOCATION_LOG_LONGITUDE, LOCATION_LOG_USER_ID) values (1, '9/1/2024', -7.2065356, 108.7541564, 1);
 insert into LOCATION_LOG (LOCATION_LOG_ID, LOCATION_LOG_TIMESTAMP, LOCATION_LOG_LATITUDE, LOCATION_LOG_LONGITUDE, LOCATION_LOG_USER_ID) values (2, '8/1/2024', 5.5382999, -73.632154, 2);
 insert into LOCATION_LOG (LOCATION_LOG_ID, LOCATION_LOG_TIMESTAMP, LOCATION_LOG_LATITUDE, LOCATION_LOG_LONGITUDE, LOCATION_LOG_USER_ID) values (3, '1/9/2024', -37.9361202, -57.5552203, 3);

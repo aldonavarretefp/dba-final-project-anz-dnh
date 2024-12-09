@@ -1,3 +1,12 @@
+connect sys/system1 as sysdba
+
+whenever sqlerror exit rollback
+set serveroutput on
+
+----------------------------------- Modulo 1. Usuarios y Transacciones -----------------------------------
+alter session set container = naproynu_modulo_1;
+connect usermod1/usermod1 
+
 insert into PROVIDER_GALLERY (PROVIDER_GALLERY_ID, PROVIDER_GALLERY_PHOTO, PROVIDER_GALLERY_USER_ID) values (1, EMPTY_BLOB(), 1);
 insert into PROVIDER_GALLERY (PROVIDER_GALLERY_ID, PROVIDER_GALLERY_PHOTO, PROVIDER_GALLERY_USER_ID) values (2, EMPTY_BLOB(), 2);
 insert into PROVIDER_GALLERY (PROVIDER_GALLERY_ID, PROVIDER_GALLERY_PHOTO, PROVIDER_GALLERY_USER_ID) values (3, EMPTY_BLOB(), 3);

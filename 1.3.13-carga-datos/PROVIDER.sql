@@ -1,3 +1,12 @@
+connect sys/system1 as sysdba
+
+whenever sqlerror exit rollback
+set serveroutput on
+
+----------------------------------- Modulo 1. Usuarios y Transacciones -----------------------------------
+alter session set container = naproynu_modulo_1;
+connect usermod1/usermod1 
+
 insert into PROVIDER (PROVIDER_USER_ID, PROVIDER_NAME, PROVIDER_LOGO, PROVIDER_DESCRIPTION) values (1, 'Cremin-Mann', EMPTY_BLOB(), 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Proin risus. Praesent lectus.');
 insert into PROVIDER (PROVIDER_USER_ID, PROVIDER_NAME, PROVIDER_LOGO, PROVIDER_DESCRIPTION) values (2, 'Goyette, Kuhlman and Zieme', EMPTY_BLOB(), 'Integer ac leo. Pellentesque ultrices mattis odio. Donec vitae nisi.');
 insert into PROVIDER (PROVIDER_USER_ID, PROVIDER_NAME, PROVIDER_LOGO, PROVIDER_DESCRIPTION) values (3, 'Gislason-Hirthe', EMPTY_BLOB(), 'Sed ante. Vivamus tortor. Duis mattis egestas metus.');

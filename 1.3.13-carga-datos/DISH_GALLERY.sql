@@ -1,3 +1,12 @@
+connect sys/system1 as sysdba
+
+whenever sqlerror exit rollback
+set serveroutput on
+
+----------------------------------- Modulo 2. Órdenes y platos -----------------------------------
+alter session set container = naproynu_modulo_2;
+connect usermod2/usermod2 
+
 insert into DISH_GALLERY (DISH_GALLERY_ID, DISH_GALLERY_PHOTO, DISH_GALLERY_DISH_ID) values (1, EMPTY_BLOB(), 1);
 insert into DISH_GALLERY (DISH_GALLERY_ID, DISH_GALLERY_PHOTO, DISH_GALLERY_DISH_ID) values (2, EMPTY_BLOB(), 2);
 insert into DISH_GALLERY (DISH_GALLERY_ID, DISH_GALLERY_PHOTO, DISH_GALLERY_DISH_ID) values (3, EMPTY_BLOB(), 3);

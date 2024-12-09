@@ -1,3 +1,12 @@
+connect sys/system1 as sysdba
+
+whenever sqlerror exit rollback
+set serveroutput on
+
+----------------------------------- Modulo 2. Órdenes y platos -----------------------------------
+alter session set container = naproynu_modulo_2;
+connect usermod2/usermod2 
+
 insert into DISH_PRICE_HISTORY (DISH_PRICE_HISTORY_ID, DISH_PRICE_HISTORY_AMOUNT, DISH_PRICE_HISTORY_DATE, DISH_PRICE_HISTORY_DISH_ID) values (1, 749.62, '07/12/2024', 1);
 insert into DISH_PRICE_HISTORY (DISH_PRICE_HISTORY_ID, DISH_PRICE_HISTORY_AMOUNT, DISH_PRICE_HISTORY_DATE, DISH_PRICE_HISTORY_DISH_ID) values (2, 628.49, '29/11/2024', 2);
 insert into DISH_PRICE_HISTORY (DISH_PRICE_HISTORY_ID, DISH_PRICE_HISTORY_AMOUNT, DISH_PRICE_HISTORY_DATE, DISH_PRICE_HISTORY_DISH_ID) values (3, 597.78, '03/02/2024', 3);

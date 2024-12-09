@@ -1,3 +1,12 @@
+connect sys/system1 as sysdba
+
+whenever sqlerror exit rollback
+set serveroutput on
+
+----------------------------------- Modulo 1. Usuarios y Transacciones -----------------------------------
+alter session set container = naproynu_modulo_1;
+connect usermod1/usermod1 
+
 insert into PROVIDER_BANK_DATA (PROVIDER_BANK_DATA_ID, PROVIDER_BANK_DATA_CLABE, PROVIDER_BANK_DATA_FREQUENCY, PROVIDER_BANK_DATA_BANK_ID, PROVIDER_BANK_DATA_PROVIDER_ID) values (1, '2915356495046006', 'DAILY', 4, 1);
 insert into PROVIDER_BANK_DATA (PROVIDER_BANK_DATA_ID, PROVIDER_BANK_DATA_CLABE, PROVIDER_BANK_DATA_FREQUENCY, PROVIDER_BANK_DATA_BANK_ID, PROVIDER_BANK_DATA_PROVIDER_ID) values (2, '6475073062982011', 'DAILY', 4, 2);
 insert into PROVIDER_BANK_DATA (PROVIDER_BANK_DATA_ID, PROVIDER_BANK_DATA_CLABE, PROVIDER_BANK_DATA_FREQUENCY, PROVIDER_BANK_DATA_BANK_ID, PROVIDER_BANK_DATA_PROVIDER_ID) values (3, '1793561609864604', 'WEEKLY', 3, 3);

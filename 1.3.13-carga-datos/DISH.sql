@@ -1,3 +1,12 @@
+connect sys/system1 as sysdba
+
+whenever sqlerror exit rollback
+set serveroutput on
+
+----------------------------------- Modulo 2. Órdenes y platos -----------------------------------
+alter session set container = naproynu_modulo_2;
+connect usermod2/usermod2 
+
 insert into DISH (DISH_ID, DISH_NAME, DISH_CATEGORY, DISH_DESCRIPTION, DISH_CALORIES, DISH_VIDEO, DISH_LAST_PRICE, DISH_LAST_PRICE_DATE, DISH_TYPE_ID, DISH_PROVIDER_USER_ID) values (1, 'Beef Stroganoff', 'BREAKFAST', 'SKUtPHHhRTCtxSrsvMuxklCHUCnWpzBiyGnHeowgJfGMqfxjejqEfUEtvFMTQrPvbxXVCloGnovIHqfKMwEUOHgqtlrGMTAnBvUwLBMbLjUtIzuIgxNezxeARJXLdReCcyIiVkMvGejFoiWphBeMtQGYZwFikDcHbZAEXOSZHwpmGiUuZcoOElAsJbtLsdKKofEWOSel', 443, EMPTY_BLOB(), 985.86, '12/10/2024', 2, 1);
 insert into DISH (DISH_ID, DISH_NAME, DISH_CATEGORY, DISH_DESCRIPTION, DISH_CALORIES, DISH_VIDEO, DISH_LAST_PRICE, DISH_LAST_PRICE_DATE, DISH_TYPE_ID, DISH_PROVIDER_USER_ID) values (2, 'Spaghetti Carbonara', 'LUNCH', 'IMsspJyIDmlfoXQEFJdstTgbVaWdtrEISbWHfLHJSFcWTcInHEIVcQvSLYXxarkcVuNCVaRkXPPMhpXfSCFqMdLMZbLxvThhFnisbHXWnOhnUHuxyWrfmvVemsOIOtVdWWtkupQVvrMZkKIiVgrceDecZzXnGpaUHVyyOOZHdyhDwmovTBYRPQZCZyLJZHVwhLBXJyxI', 421, EMPTY_BLOB(), 561.73, '17/01/2024', 1, 2);
 insert into DISH (DISH_ID, DISH_NAME, DISH_CATEGORY, DISH_DESCRIPTION, DISH_CALORIES, DISH_VIDEO, DISH_LAST_PRICE, DISH_LAST_PRICE_DATE, DISH_TYPE_ID, DISH_PROVIDER_USER_ID) values (3, 'Spaghetti Carbonara', 'LUNCH', 'sOyErLSEmbmBraeNrzXTTcpZtjJsRdWQwXGfUxFVtGtlwJECezJkWSkFJCtBctMtKGkIVNyTGqNmKjLjgoTBPYChVlwfUKMsagNAZhOQEnpiMUNPjzPmTEvmHOfDVDaLTdCQifkxmnpEnaKQBnOhARbWOTyadBqewXxctQznGgrVWgpZlNpSqKtULjFcVfoeccpqxrON', 460, EMPTY_BLOB(), 608.11, '11/11/2024', 4, 3);

@@ -1,3 +1,12 @@
+connect sys/system1 as sysdba
+
+whenever sqlerror exit rollback
+set serveroutput on
+
+----------------------------------- Modulo 1. Usuarios y Transacciones -----------------------------------
+alter session set container = naproynu_modulo_1;
+connect usermod1/usermod1 
+
 insert into CARD (CARD_ID, CARD_NUMBER, CARD_EXPIRATION_DATE, CARD_EXPIRATION_MONTH, CARD_CVV, CARD_CLIENT_ID) values (1, '374288839352969', 2029, '10', '207', 1);
 insert into CARD (CARD_ID, CARD_NUMBER, CARD_EXPIRATION_DATE, CARD_EXPIRATION_MONTH, CARD_CVV, CARD_CLIENT_ID) values (2, '5100171525870884', 2029, '09', '159', 2);
 insert into CARD (CARD_ID, CARD_NUMBER, CARD_EXPIRATION_DATE, CARD_EXPIRATION_MONTH, CARD_CVV, CARD_CLIENT_ID) values (3, '374283397474883', 2026, '12', '706', 3);

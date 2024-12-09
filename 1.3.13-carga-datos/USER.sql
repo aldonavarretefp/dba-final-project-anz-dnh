@@ -1,3 +1,12 @@
+connect sys/system1 as sysdba
+
+whenever sqlerror exit rollback
+set serveroutput on
+
+----------------------------------- Modulo 1. Usuarios y Transacciones -----------------------------------
+alter session set container = naproynu_modulo_1;
+connect usermod1/usermod1 
+
 insert into USER (USER_ID, USER_USERNAME, USER_USERPASSWORD, USER_EMAIL, USER_IS_CLIENT, USER_IS_DEALER, USER_IS_PROVIDER) values (1, 'bgaukroger0', '$2a$04$JI.jCSHfbWStlgWJZ6dgSefzhQVYpniesg/0nQS2R2VGiHJSZ14ji', 'rfydoe0@i2i.jp', 0, 1, 1);
 insert into USER (USER_ID, USER_USERNAME, USER_USERPASSWORD, USER_EMAIL, USER_IS_CLIENT, USER_IS_DEALER, USER_IS_PROVIDER) values (2, 'lpelz1', '$2a$04$0YEQsm4JhlgsigSmcYcOButb6tUikphL1112mM10YJUibi1IJ9FSm', 'jphillput1@vinaora.com', 1, 1, 0);
 insert into USER (USER_ID, USER_USERNAME, USER_USERPASSWORD, USER_EMAIL, USER_IS_CLIENT, USER_IS_DEALER, USER_IS_PROVIDER) values (3, 'mtonry2', '$2a$04$fT6bIhwiKNUw6Wfy/S8KfeBNRHUs11rCbY91uqIEKfPHiQLxzSN1W', 'pholehouse2@mlb.com', 1, 1, 1);
