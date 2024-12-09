@@ -11,7 +11,7 @@ set serveroutput on
 alter session set container = naproynu_modulo_1;
 
 Prompt 1. Creando usuario USERMOD1
-drop user usermod1 cascade;
+drop user if exists usermod1 cascade;
 create user usermod1 identified by usermod1 quota unlimited on users;
 
 alter user usermod1 quota unlimited on TS_USERS_DATA;
@@ -31,7 +31,7 @@ grant create session, create table, create procedure, create sequence to usermod
 alter session set container = naproynu_modulo_2;
 
 Prompt 2. Creando usuario USERMOD2
-drop user usermod2 cascade;
+drop user if exists usermod2 cascade;
 create user usermod2 identified by usermod2 quota unlimited on users;
 
 alter user usermod2 quota unlimited on TS_DISH_DATA;
