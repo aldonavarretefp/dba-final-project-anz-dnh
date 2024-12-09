@@ -5,6 +5,9 @@
 whenever sqlerror exit rollback;
 
 Prompt A. Autenticando como sysdba
+
+spool e-11-modo-archivelog-oracle-spool.txt
+
 connect sys/system1 as sysdba;
 
 col member format a60
@@ -47,11 +50,17 @@ Prompt J.  Provocando un archivado de redo logs
 alter system switch logfile;
 
 Prompt K.  Mostrando el contenido de los directorios
-define disk_route = '/unam-bda/archivelogs/BOORPROY/disk_*'
+define disk_route = '/unam/bda/proyecto-final/archivelogs/FREE/disk_*'
 !ls -lh &disk_route
+
+Pause Presiona enter para continuar...
+
 
 Prompt L. Consultando detalle de los archive redo logs
 col name format a70 
 select name,dest_id, sequence#,status from v$archived_log;
 
 Prompt Listo!
+
+spool off;
+exit;
