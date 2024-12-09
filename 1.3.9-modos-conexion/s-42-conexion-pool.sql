@@ -1,10 +1,12 @@
---@Autor: Borboa Castillo Carlos Alfonso y Ortiz Rivera Miguel Ángel
+--@Autor: Borboa Castillo Carlos Alfonso y Ortiz Rivera Miguel Ángel TODO
 --@Fecha creación: 07/06/2024
 --@Descripción: Configura modo pool
-whenever sqlerror continue none;
+whenever sqlerror exit rollback;
 
 Prompt Conectando como usuario sys...
-connect sys/system as sysdba
+connect sys/system1 as sysdba
+
+spool s-42-conexion-pool.log
 
 --B. Iniciar un nuevo connection pool. Por default la BD cuenta con un connection pool
 --llamado SYS_DEFAULT_CONNECTION_POOL. Ejecutar la siguiente instrucción para
@@ -36,3 +38,5 @@ exec dbms_connection_pool.alter_param ('','INACTIVITY_TIMEOUT','1800');
 exec dbms_connection_pool.alter_param ('','MAX_THINK_TIME','1800');
 
 Prompt Todo listo!
+spool off
+exit 

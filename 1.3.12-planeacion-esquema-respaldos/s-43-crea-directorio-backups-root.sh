@@ -1,9 +1,12 @@
 #!/bin/bash
-# @Autor: Borboa Castillo Carlos Alfonso, Ortiz Rivera Miguel Angel
-# @Fecha: 07/06/2024
-# @Descripcion: genera el directorio para guardar backups
+# @Autor: Borboa Castillo Carlos Alfonso, Ortiz Rivera Miguel Angel TODO: Cambiar por su nombre
+# @Fecha: 07/06/2024 TODO: Cambiar por su nombre
+# @Descripcion: genera el directorio para guardar backups TODO: Cambiar por su nombre
 
-export ORACLE_SID=boorproy
+set -e
+export ORACLE_SID=free
+
+backups_dir="/unam/bda/proyecto-final/backups"
 
 echo "------------------------Validando la existencia de directorio para backups--------------------------"
 

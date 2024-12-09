@@ -2,8 +2,12 @@
 
 mejor_ruta_para_guardar_log=/unam/bda/proyecto-final/logs # TODO: Cambiar por la mejor ruta para guardar logs
 
-rman target / @/path/to/full_backup_script.rman
+if [ ! -d $mejor_ruta_para_guardar_log ]; then
+  echo "Creando directorio para guardar logs..."
+  mkdir -p $mejor_ruta_para_guardar_log
+fi
 
+rman target / 
 
 touch $mejor_ruta_para_guardar_log/full_backup.log
 

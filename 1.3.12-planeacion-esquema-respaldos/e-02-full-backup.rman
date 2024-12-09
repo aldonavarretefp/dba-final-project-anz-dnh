@@ -1,4 +1,4 @@
-rman target /
+rman target "sys/system1 as sysdba"
 RUN {
     -- Etiqueta para identificar el backup
     BACKUP DATABASE PLUS ARCHIVELOG TAG 'FULL_BACKUP_WEEKLY'

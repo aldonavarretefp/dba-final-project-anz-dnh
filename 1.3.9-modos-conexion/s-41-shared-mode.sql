@@ -1,36 +1,21 @@
 --@Autor: Navarrete Zamora Aldo Yael y Diego Ignacio Nuñez Hernandez
---@Fecha creación: 07/06/2024
+--@Fecha creación: 07/06/2024 TODO:
 --@Descripción: Configuracion del modo compartido.
 
 whenever sqlerror exit rollback;
 
+spool s-41-shared-mode.log
 prompt Conectando con sys
-connect sys/system as sysdba;
-
-
+connect sys/system1 as sysdba;
 prompt Configurando la instancia para habilitar el modo compartido.
-
---Configura 2 dispatchers para protocolo TCP
-
+Prompt Cambiando el número de despachadores y servidores compartidos
 alter system set dispatchers='(dispatchers=4)(protocol=tcp)' scope=memory;
-
---Configura 5 shared servers
---1 shared process por cada 10 conexiones
-
-alter system set shared_servers=8 scope=memory;
-
-
+alter system set shared_servers=5 scope=memory;
+Prompt Mostrando los parámetros de la instancia
 show parameter dispatchers
 show parameter shared_servers
-
 prompt Actualizando listener:
-
--- Registrar nuevamente los servicios con el listener:
-
 alter system register;
-
--- Mostrando los servicios registrados
-
 !lsnrctl services
 
 --Al finalizar, debemos modificar el alias de servicio en network/admin/tnsnames.ora
@@ -46,3 +31,6 @@ alter system register;
 --)
 --)
 
+Pause [Enter] Se pudieron visualizar los cambios realizados en el listener y en la configuración de la instancia?...
+spool off
+exit;
