@@ -1,4 +1,16 @@
+--@Autor: Aldo Yael Navarrete Zamora, Diego Ignacio Núñez Hernández
+--@Fecha creación:  08/12/2024
+--@Descripción:     Creación de tablas
+
+connect sys/system1 as sysdba
+
+whenever sqlerror exit rollback
+set serveroutput on
+
 ----------------------------------- Modulo 1. Usuarios y Transacciones -----------------------------------
+alter session set container = naproynu_modulo_1;
+connect usermod1/usermod1 
+
 CREATE TABLE BANK (
     BANK_ID              NUMBER NOT NULL,
     BANK_NAME            VARCHAR2(20) NOT NULL,
@@ -201,6 +213,9 @@ CREATE INDEX IDX_PROVIDER_PAYMENT_USER_ID ON PROVIDER_PAYMENT (PROVIDER_PAYMENT_
 CREATE INDEX IDX_PROVIDER_PAYMENT_DATE ON PROVIDER_PAYMENT (PROVIDER_PAYMENT_DATE) TABLESPACE TS_PAYMENTS_INDEX;
 
 ----------------------------------- Modulo 2. Órdenes y platos -----------------------------------
+alter session set container = naproynu_modulo_2;
+connect usermod2/usermod2 
+
 CREATE TABLE DISH (
     DISH_ID              NUMBER NOT NULL,
     DISH_NAME            VARCHAR2(20) NOT NULL,

@@ -2,7 +2,6 @@
 --@Fecha creación:  08/12/2024
 --@Descripción:     Crea un usuario para crear las tablas del proyecto
 
-Prompt proporcione el password del usuario sys
 connect sys/system1 as sysdba
 
 whenever sqlerror exit rollback
