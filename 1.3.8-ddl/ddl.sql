@@ -9,7 +9,7 @@ set serveroutput on
 
 ----------------------------------- Modulo 1. Usuarios y Transacciones -----------------------------------
 alter session set container = naproynu_modulo_1;
-connect usermod1/usermod1 
+connect usermod1/usermod1@naproynu_modulo_1 
 
 CREATE TABLE BANK (
     BANK_ID              NUMBER NOT NULL,
@@ -214,7 +214,7 @@ CREATE INDEX IDX_PROVIDER_PAYMENT_DATE ON PROVIDER_PAYMENT (PROVIDER_PAYMENT_DAT
 
 ----------------------------------- Modulo 2. Órdenes y platos -----------------------------------
 alter session set container = naproynu_modulo_2;
-connect usermod2/usermod2 
+connect usermod2/usermod2@naproynu_modulo_2 
 
 CREATE TABLE DISH (
     DISH_ID              NUMBER NOT NULL,
