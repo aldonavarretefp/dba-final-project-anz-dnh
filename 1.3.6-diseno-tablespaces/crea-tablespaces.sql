@@ -11,6 +11,8 @@ whenever sqlerror exit rollback
 set serveroutput on
 
 ----------------------------------- Modulo 1. Usuarios y Transacciones -----------------------------------
+alter session set container = naproynu_modulo_1;
+
 ----- TS_USERS_DATA 
 -- USER, CLIENT, DEALER, PROVIDER
 create tablespace TS_USERS_DATA
@@ -93,6 +95,8 @@ create tablespace TS_LOCATION_INDEX
   segment space management auto;
 
 ----------------------------------- Modulo 2. Proveedores y Servicios -----------------------------------
+alter session set container = naproynu_modulo_2;
+
 ----- TS_DISH_DATA
 -- DISH, DISH_PRICE_HISTORY, DISH_REVIEW, DISH_TYPE
 create tablespace TS_DISH_DATA
