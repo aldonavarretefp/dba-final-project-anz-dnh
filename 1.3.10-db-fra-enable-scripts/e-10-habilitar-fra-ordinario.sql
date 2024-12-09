@@ -2,6 +2,8 @@
 --@Fecha: 2024-12-1
 --@Descripción: Script para habilitar la FRA en una base de datos Oracle 19c
 
+whenever sqlerror exit rollback;
+
 Prompt 0. Creando spool
 spool anz-e-01-habilitar-fra-ordinario.txt
 
