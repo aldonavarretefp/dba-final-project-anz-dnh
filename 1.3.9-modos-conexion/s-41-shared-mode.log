@@ -1,0 +1,28 @@
+Conectando con sys
+Connected.
+Configurando la instancia para habilitar el modo compartido.
+Cambiando el número de despachadores y servidores compartidos
+
+System altered.
+
+
+System altered.
+
+Mostrando los parámetros de la instancia
+
+NAME                                 TYPE        VALUE                          
+------------------------------------ ----------- ------------------------------ 
+dispatchers                          string      (dispatchers=4)(protocol=tcp)  
+max_dispatchers                      integer                                    
+
+NAME                                 TYPE        VALUE                          
+------------------------------------ ----------- ------------------------------ 
+max_shared_servers                   integer                                    
+shared_servers                       integer     5                              
+Actualizando listener:
+
+System altered.
+
+
+[Enter] Se pudieron visualizar los cambios realizados en el listener y en la configuración de la instancia?...
+
