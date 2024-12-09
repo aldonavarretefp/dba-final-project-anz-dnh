@@ -5,7 +5,9 @@
 whenever sqlerror exit rollback;
 
 Prompt A. Autenticando como sysdba
-
+set echo on
+set feedback on
+set serveroutput on
 spool e-11-modo-archivelog-oracle-spool.txt
 
 connect sys/system1 as sysdba;
@@ -62,5 +64,8 @@ select name,dest_id, sequence#,status from v$archived_log;
 
 Prompt Listo!
 
+set echo off
+set feedback off
+set serveroutput off
 spool off;
 exit;
