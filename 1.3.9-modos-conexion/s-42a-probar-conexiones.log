@@ -1,0 +1,15 @@
+Conectando como usuario sys...
+Connected.
+viendo en qué modo de conexión estamos
+
+no rows selected
+
+[Enter] ¿En qué modo de conexión estamos?...
+
+Probando la conexión
+conectando NAPROYNU_MODULO_1...
+ERROR:
+ORA-12537: TNS:connection closed
+Help: https://docs.oracle.com/error-help/db/ora-12537/ 
+
+
