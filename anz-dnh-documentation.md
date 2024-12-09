@@ -122,13 +122,7 @@ Con base a las reglas de negocio del caso de estudio asignado generar una lista 
 
 | Módulo | Nombre de la tabla | Nombre del índice | Tipo | Propósito |
 |--------|--------------------|-------------------|------|-----------|
-| Gestión de Usuarios y pedidos | USER | user_pk | Primary Key | Llave primaria tabla USER |
-| Gestión de Usuarios y pedidos | CLIENT | client_pk | Primary Key | Llave primaria tabla CLIENT |
-| Gestión de Usuarios y pedidos | CLIENT |  |  |  |
-| Gestión de Usuarios y pedidos |  |  |  |  |
-| Gestión de Usuarios y pedidos |  |  |  |  |
-| Gestión de Usuarios y pedidos |  |  |  |  |
-|  |  |  |  |  |
+| Gestión de Usuarios y Transacciones | BANK | BANK_PK |  |  |
 |  |  |  |  |  |
 |  |  |  |  |  |
 |  |  |  |  |  |

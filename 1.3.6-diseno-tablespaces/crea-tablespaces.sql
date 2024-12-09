@@ -8,15 +8,14 @@ Prompt conectando como sysdba
 connect sys/system as sysdba
 
 ----------------------------------- Modulo 1. Usuarios y Transacciones -----------------------------------
-
------ TS_USERS_DATA
+----- TS_USERS_DATA 
 -- USER, CLIENT, DEALER, PROVIDER
 create tablespace TS_USERS_DATA
   datafile 
-  '/u01/app/oracle/oradata/TS_USERS_DATA01.dbf' size 100m,
-  '/u01/app/oracle/oradata/TS_USERS_DATA02.dbf' size 100m,
-  '/u01/app/oracle/oradata/TS_USERS_DATA03.dbf' size 100m
-  autoextend on next 10m maxsize 300m
+  '/unam/bda/proyecto-final/d11/TS_USERS_DATA01.dbf' size 100m,
+  '/unam/bda/proyecto-final/d12/TS_USERS_DATA02.dbf' size 100m,
+  '/unam/bda/proyecto-final/d13/TS_USERS_DATA03.dbf' size 100m
+  autoextend on next 50m maxsize 500m
   extent management local autoallocate
   segment space management auto;
 
@@ -25,17 +24,16 @@ create tablespace TS_USERS_DATA
 -- CLIENT_PHOTO, DEALER_PHOTO, DEALER_MOTORCYCLE_PHOTO, PROVIDER_LOGO
 create bigfile tablespace TS_USERS_BLOB
   datafile
-  '/u01/app/oracle/oradata/TS_USERS_BLOB01.dbf' size 100m
+  '/unam/bda/proyecto-final/d14/TS_USERS_BLOB01.dbf' size 1g
   extent management local autoallocate;
 
 ----- TS_USERS_INDEX
 -- UIDX_USER_USERNAME, UIDX_USER_EMAIL
 create tablespace TS_USERS_INDEX
   datafile 
-  '/u01/app/oracle/oradata/TS_USERS_INDEX01.dbf' size 100m,
-  '/u01/app/oracle/oradata/TS_USERS_INDEX02.dbf' size 100m,
-  '/u01/app/oracle/oradata/TS_USERS_INDEX03.dbf' size 100m
-  autoextend on next 10m maxsize 300m
+  '/unam/bda/proyecto-final/d11/TS_USERS_INDEX01.dbf' size 100m,
+  '/unam/bda/proyecto-final/d12/TS_USERS_INDEX02.dbf' size 100m
+  autoextend on next 50m maxsize 200m
   extent management local autoallocate
   segment space management auto;
 
@@ -43,10 +41,10 @@ create tablespace TS_USERS_INDEX
 -- BANK, CARD, DEALER_BANK_DATA, PROVIDER_BANK_DATA
 create tablespace TS_PAYMENTS_DATA
   datafile 
-  '/u01/app/oracle/oradata/TS_PAYMENTS_DATA01.dbf' size 100m,
-  '/u01/app/oracle/oradata/TS_PAYMENTS_DATA02.dbf' size 100m,
-  '/u01/app/oracle/oradata/TS_PAYMENTS_DATA03.dbf' size 100m
-  autoextend on next 10m maxsize 300m
+  '/unam/bda/proyecto-final/d11/TS_PAYMENTS_DATA01.dbf' size 100m,
+  '/unam/bda/proyecto-final/d12/TS_PAYMENTS_DATA02.dbf' size 100m,
+  '/unam/bda/proyecto-final/d13/TS_PAYMENTS_DATA03.dbf' size 100m
+  autoextend on next 50m maxsize 300m
   extent management local autoallocate
   segment space management auto;
 
@@ -55,10 +53,9 @@ create tablespace TS_PAYMENTS_DATA
 -- IDX_PROVIDER_BANK_DATA_PROVIDER_ID, IDX_PROVIDER_PAYMENT_USER_ID, IDX_PROVIDER_PAYMENT_DATE
 create tablespace TS_PAYMENTS_INDEX
   datafile 
-  '/u01/app/oracle/oradata/TS_PAYMENTS_INDEX01.dbf' size 100m,
-  '/u01/app/oracle/oradata/TS_PAYMENTS_INDEX02.dbf' size 100m,
-  '/u01/app/oracle/oradata/TS_PAYMENTS_INDEX03.dbf' size 100m
-  autoextend on next 10m maxsize 300m
+  '/unam/bda/proyecto-final/d11/TS_PAYMENTS_INDEX01.dbf' size 50m,
+  '/unam/bda/proyecto-final/d12/TS_PAYMENTS_INDEX02.dbf' size 50m
+  autoextend on next 25m maxsize 100m
   extent management local autoallocate
   segment space management auto;
 
@@ -66,10 +63,10 @@ create tablespace TS_PAYMENTS_INDEX
 -- DEALER_PAYMENT, PROVIDER_PAYMENT
 create tablespace TS_PAYMENTS_HISTORY
   datafile 
-  '/u01/app/oracle/oradata/TS_PAYMENTS_HISTORY01.dbf' size 100m,
-  '/u01/app/oracle/oradata/TS_PAYMENTS_HISTORY02.dbf' size 100m,
-  '/u01/app/oracle/oradata/TS_PAYMENTS_HISTORY03.dbf' size 100m
-  autoextend on next 10m maxsize 300m
+  '/unam/bda/proyecto-final/d11/TS_PAYMENTS_HISTORY01.dbf' size 100m,
+  '/unam/bda/proyecto-final/d12/TS_PAYMENTS_HISTORY02.dbf' size 100m,
+  '/unam/bda/proyecto-final/d13/TS_PAYMENTS_HISTORY03.dbf' size 100m
+  autoextend on next 50m maxsize 300m
   extent management local autoallocate
   segment space management auto;
 
@@ -77,10 +74,9 @@ create tablespace TS_PAYMENTS_HISTORY
 -- LOCATION_LOG
 create tablespace TS_LOCATION_DATA
   datafile 
-  '/u01/app/oracle/oradata/TS_LOCATION_DATA01.dbf' size 100m,
-  '/u01/app/oracle/oradata/TS_LOCATION_DATA02.dbf' size 100m,
-  '/u01/app/oracle/oradata/TS_LOCATION_DATA03.dbf' size 100m
-  autoextend on next 10m maxsize 300m
+  '/unam/bda/proyecto-final/d11/TS_LOCATION_DATA01.dbf' size 100m,
+  '/unam/bda/proyecto-final/d12/TS_LOCATION_DATA02.dbf' size 100m
+  autoextend on next 50m maxsize 400m
   extent management local autoallocate
   segment space management auto;
 
@@ -88,10 +84,8 @@ create tablespace TS_LOCATION_DATA
 -- IDX_LOCATION_LOG_USER_ID, IDX_LOCATION_LOG_TIMESTAMP
 create tablespace TS_LOCATION_INDEX
   datafile 
-  '/u01/app/oracle/oradata/TS_LOCATION_INDEX01.dbf' size 100m,
-  '/u01/app/oracle/oradata/TS_LOCATION_INDEX02.dbf' size 100m,
-  '/u01/app/oracle/oradata/TS_LOCATION_INDEX03.dbf' size 100m
-  autoextend on next 10m maxsize 300m
+  '/unam/bda/proyecto-final/d11/TS_LOCATION_INDEX01.dbf' size 50m
+  autoextend on next 10m maxsize 100m
   extent management local autoallocate
   segment space management auto;
 
@@ -100,10 +94,10 @@ create tablespace TS_LOCATION_INDEX
 -- DISH, DISH_PRICE_HISTORY, DISH_REVIEW, DISH_TYPE
 create tablespace TS_DISH_DATA
   datafile 
-  '/u01/app/oracle/oradata/TS_DISH_DATA01.dbf' size 100m,
-  '/u01/app/oracle/oradata/TS_DISH_DATA02.dbf' size 100m,
-  '/u01/app/oracle/oradata/TS_DISH_DATA03.dbf' size 100m
-  autoextend on next 10m maxsize 300m
+  '/unam/bda/proyecto-final/d15/TS_DISH_DATA01.dbf' size 100m,
+  '/unam/bda/proyecto-final/d16/TS_DISH_DATA02.dbf' size 100m,
+  '/unam/bda/proyecto-final/d17/TS_DISH_DATA03.dbf' size 100m
+  autoextend on next 50m maxsize 300m
   extent management local autoallocate
   segment space management auto;
 
@@ -112,7 +106,7 @@ create tablespace TS_DISH_DATA
 -- DISH_VIDEO 
 create bigfile tablespace TS_DISH_BLOB
   datafile
-  '/u01/app/oracle/oradata/TS_DISH_BLOB01.dbf' size 100m
+  '/unam/bda/proyecto-final/d18/TS_DISH_BLOB01.dbf' size 1g
   extent management local autoallocate;
 
 ----- TS_DISH_INDEX
@@ -120,10 +114,8 @@ create bigfile tablespace TS_DISH_BLOB
 -- IDX_DISH_PRICE_HISTORY_DISH_ID, IDX_DISH_REVIEW_DISH_ID, IDX_DISH_REVIEW_USER_ID
 create tablespace TS_DISH_INDEX
   datafile 
-  '/u01/app/oracle/oradata/TS_DISH_INDEX01.dbf' size 100m,
-  '/u01/app/oracle/oradata/TS_DISH_INDEX02.dbf' size 100m,
-  '/u01/app/oracle/oradata/TS_DISH_INDEX03.dbf' size 100m
-  autoextend on next 10m maxsize 300m
+  '/unam/bda/proyecto-final/d15/TS_DISH_INDEX01.dbf' size 50m
+  autoextend on next 10m maxsize 100m
   extent management local autoallocate
   segment space management auto;
 
@@ -131,10 +123,10 @@ create tablespace TS_DISH_INDEX
 -- ORDER, ORDER_DISH, ORDER_REVIEW, ORDER_STATUS, ORDER_STATUS_HISTORY
 create tablespace TS_ORDERS_DATA
   datafile 
-  '/u01/app/oracle/oradata/TS_ORDERS_DATA01.dbf' size 100m,
-  '/u01/app/oracle/oradata/TS_ORDERS_DATA02.dbf' size 100m,
-  '/u01/app/oracle/oradata/TS_ORDERS_DATA03.dbf' size 100m
-  autoextend on next 10m maxsize 300m
+  '/unam/bda/proyecto-final/d15/TS_ORDERS_DATA01.dbf' size 100m,
+  '/unam/bda/proyecto-final/d16/TS_ORDERS_DATA02.dbf' size 100m,
+  '/unam/bda/proyecto-final/d17/TS_ORDERS_DATA03.dbf' size 100m
+  autoextend on next 50m maxsize 300m
   extent management local autoallocate
   segment space management auto;
 
@@ -142,7 +134,7 @@ create tablespace TS_ORDERS_DATA
 -- ORDER_DIG_SIGNATURE
 create bigfile tablespace TS_ORDERS_BLOB
   datafile
-  '/u01/app/oracle/oradata/TS_ORDERS_BLOB01.dbf' size 100m
+  '/unam/bda/proyecto-final/d19/TS_ORDERS_BLOB01.dbf' size 1000m
   extent management local autoallocate;
 
 ----- TS_ORDERS_INDEX
@@ -151,9 +143,7 @@ create bigfile tablespace TS_ORDERS_BLOB
 -- IDX_ORDER_STATUS_HISTORY_STATUS_ID, IDX_ORDER_STATUS_HISTORY_DATE
 create tablespace TS_ORDERS_INDEX
   datafile 
-  '/u01/app/oracle/oradata/TS_ORDERS_INDEX01.dbf' size 100m,
-  '/u01/app/oracle/oradata/TS_ORDERS_INDEX02.dbf' size 100m,
-  '/u01/app/oracle/oradata/TS_ORDERS_INDEX03.dbf' size 100m
-  autoextend on next 10m maxsize 300m
+  '/unam/bda/proyecto-final/d15/TS_ORDERS_INDEX01.dbf' size 50m
+  autoextend on next 10m maxsize 100m
   extent management local autoallocate
   segment space management auto;
