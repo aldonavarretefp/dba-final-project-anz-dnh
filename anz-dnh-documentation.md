@@ -201,6 +201,18 @@ tablas como para índices, PKs, índices tipo LOB.
 ### 1.3.9.Modos de conexión.
 - Realizar las configuraciones necesarias de tal forma que un usuario pueda conectarse a la instancia ya sea en modo compartido o en modo dedicado o a través de un pool de conexiones. La configuración por defecto deberá ser modo dedicado.
 
+Nuestros servicios son los siguientes descritos en `tnsnames.ora`:
+```sql
+NAPROYNU_MODULO_1
+NAPROYNU_MODULO_1_SHARED
+NAPROYNU_MODULO_1_DEDICATED
+NAPROYNU_MODULO_1_POOLED
+NAPROYNU_MODULO_2
+NAPROYNU_MODULO_2_SHARED
+NAPROYNU_MODULO_2_DEDICATED
+NAPROYNU_MODULO_2_POOLED
+```
+
 ### 1.3.10. Habilitar la FRA
 - Habilitar la FRA, realizar un cálculo estimado de su tamaño con base a la cantidad de datos que se pretenden almacenar (ver siguientes secciones).
 

@@ -1,6 +1,0 @@
-rman target /
-RUN {
-    -- Crosscheck para verificar backups obsoletos
-    CROSSCHECK BACKUP;
-    DELETE NOPROMPT OBSOLETE RECOVERY WINDOW OF 28 DAYS;
-}

@@ -24,7 +24,7 @@ echo "1. Creando directorios..."
 mkdir -p "${archive_log_dir}/${ORACLE_SID^^}/disk_a"
 
 echo "-----------Cambiando permisos-----------"
-chmod -R 750 "${archive_log_dir}/${ORACLE_SID^^}"
+chmod -R 755 "${archive_log_dir}/${ORACLE_SID^^}"
 
 echo "-----------Comprobando existencia de directorios-----------"
 ls -l "${archive_log_dir}/${ORACLE_SID^^}"

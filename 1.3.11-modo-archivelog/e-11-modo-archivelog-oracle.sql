@@ -23,7 +23,7 @@ alter system set log_archive_max_processes=2 scope=spfile;
 
 Prompt D. Configurando 2 copias, una en el disco 1 y otra en la FRA
 define proyecto_final_dir='/unam/bda/proyecto-final'
-alter system set log_archive_dest_1='LOCATION=/unam/bda/proyecto-final/archivelogs/FREE/disk_a MANDATORY' scope=spfile;
+alter system set log_archive_dest_1='LOCATION=/unam/bda/proyecto-final/archive-logs/FREE/disk_a MANDATORY' scope=spfile;
 alter system set log_archive_dest_2='LOCATION=USE_DB_RECOVERY_FILE_DEST' scope=both;
 
 Prompt E. Configurando formato

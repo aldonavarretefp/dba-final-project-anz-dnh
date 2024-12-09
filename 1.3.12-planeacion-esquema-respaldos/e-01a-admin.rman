@@ -1,0 +1,8 @@
+connect target "sys/system as sysdba";
+configure retention policy to redundancy 2; -- Mantiene dos copias de cada archivo de respaldo
+configure controlfile autobackup on; -- Garantiza que el controlfile se respalde en cada backup
+configure controlfile autobackup format for device type disk to '/unam/bda/proyecto-final/backups/ctl_file%F.bkp'; -- Especifica el formato del controlfile
+configure snapshot controlfile name to '/unam/bda/proyecto-final/backups/snapcf_naproynu.f'; -- Especifica el nombre del snapshot controlfile
+configure channel device type disk format '/unam/bda/proyecto-final/backups/backup_%U.bkp' maxpiecesize 2G; -- Especifica el formato de los archivos de respaldo y el tamaño máximo de cada pieza
+backup database plus archivelog tag backup_full_inicial_bs_01; -- Realiza un respaldo completo de la base de datos y los archivelogs
+
