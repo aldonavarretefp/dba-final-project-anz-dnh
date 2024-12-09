@@ -51,7 +51,7 @@ Prompt J.  Provocando un archivado de redo logs
 alter system switch logfile;
 
 Prompt K.  Mostrando el contenido de los directorios
-define disk_route = '/unam/bda/proyecto-final/archivelogs/FREE/disk_*'
+define disk_route = '/unam/bda/proyecto-final/archive-logs/FREE/disk_*'
 !ls -lh &disk_route
 
 Pause Presiona enter para continuar...

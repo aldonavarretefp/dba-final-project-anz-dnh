@@ -229,7 +229,7 @@ $$
 
 #### 1.3.11. Modo archivelog
 - La ubicación propuesta para las dos ubicaciónes es
-   - La ubicación del disco dedicado que es `/unam/bda/proyecto-final/archivelogs/FREE/disk_a`
+   - La ubicación del disco dedicado que es `/unam/bda/proyecto-final/archive-logs/FREE/disk_a`
    - FRA `/unam/bda/proyecto-final/fast-recovery-area`
 
 - Tip: Los discos donde se almacene la copia que no está en la FRA debería ser
