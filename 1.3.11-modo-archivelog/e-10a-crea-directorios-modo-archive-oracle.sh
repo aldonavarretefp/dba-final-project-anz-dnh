@@ -8,7 +8,7 @@ echo "creando directorios..."
 
 export ORACLE_SID=free
 proyecto_final_dir='/unam/bda/proyecto-final'
-archive_log_dir='${proyecto_final_dir}/archivelogs'
+archive_log_dir="${proyecto_final_dir}/archive-logs"
 
 if ! [ -d "${proyecto_final_dir}" ]; then
   echo "El directorio ${proyecto_final_dir} no existe"
