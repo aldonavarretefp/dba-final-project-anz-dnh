@@ -2,10 +2,11 @@
 #@Autor: TODO
 #@Fecha: TODO
 #@Descripción: crea directorios para activar el modo archive
-echo "creando directorios"
+
+set -e
+echo "creando directorios..."
 
 export ORACLE_SID=free
-
 proyecto_final_dir='/unam/bda/proyecto-final'
 archive_log_dir='${proyecto_final_dir}/archivelogs'
 
