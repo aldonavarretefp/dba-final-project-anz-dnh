@@ -5,7 +5,7 @@
 whenever sqlerror exit rollback;
 
 Prompt Conectando como sys
-connect sys/system2 as sysdba
+connect sys/system1 as sysdba
 
 Prompt creando PDB 1...
 
