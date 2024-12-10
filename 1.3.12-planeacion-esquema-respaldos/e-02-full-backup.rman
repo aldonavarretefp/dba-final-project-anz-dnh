@@ -6,3 +6,5 @@ RUN {
     -- Eliminar archivelogs ya respaldados.
     DELETE ARCHIVELOG ALL BACKED UP 2 TIMES TO DISK;
 }
+
+exit;

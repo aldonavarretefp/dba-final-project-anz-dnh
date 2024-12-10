@@ -13,4 +13,4 @@ RUN {
 EXIT;
 EOF
 
-chmod +x rman_daily_backup.sh
+
