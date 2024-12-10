@@ -19,6 +19,8 @@ exec dbms_connection_pool.alter_param ('','MINSIZE','4');
 exec dbms_connection_pool.alter_param ('','INACTIVITY_TIMEOUT','300');
 exec dbms_connection_pool.alter_param ('','MAX_THINK_TIME','120');
 
+exec dbms_connection_pool.restore_defaults();
+
 Prompt Todo listo!
 spool off
 exit

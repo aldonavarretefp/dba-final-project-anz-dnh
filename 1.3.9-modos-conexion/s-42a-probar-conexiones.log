@@ -5,11 +5,20 @@ viendo en qué modo de conexión estamos
 no rows selected
 
 [Enter] ¿En qué modo de conexión estamos?...
-
+ 
 Probando la conexión
 conectando NAPROYNU_MODULO_1...
+Connected.
+
+no rows selected
+
+[Enter] ¿En qué modo de conexión estamos?...
+
+conectando NAPROYNU_MODULO_1_SHARED...
 ERROR:
-ORA-12537: TNS:connection closed
-Help: https://docs.oracle.com/error-help/db/ora-12537/ 
+ORA-12520: Cannot connect to database. Listener at host 172.17.0.2 port 1521
+does not have handler for SHARED server type ready or registered for service
+NAPROYNU_MODULO_1.fi.unam. (CONNECTION_ID=KOJYHyVlE4TgYwIAEawcyg==)
+Help: https://docs.oracle.com/error-help/db/ora-12520/ 
 
 
