@@ -225,6 +225,7 @@ CREATE INDEX IDX_PROVIDER_PAYMENT_USER_ID ON PROVIDER_PAYMENT (PROVIDER_PAYMENT_
 CREATE INDEX IDX_PROVIDER_PAYMENT_DATE ON PROVIDER_PAYMENT (PROVIDER_PAYMENT_DATE) TABLESPACE TS_PAYMENTS_INDEX;
 
 ----------------------------------- Modulo 2. Órdenes y platos -----------------------------------
+connect sys/system1 as sysdba
 alter session set container = naproynu_modulo_2;
 connect usermod2/usermod2@naproynu_modulo_2 
 
