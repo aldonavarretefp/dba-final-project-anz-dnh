@@ -6,7 +6,7 @@ whenever sqlerror exit rollback;
 Prompt Conectando como usuario sys...
 connect sys/system1 as sysdba
 
-spool s-42-conexion-pool-inverse.log
+spool s-03-conexion-pool-stop.log
 
 -- Detener el connection pool
 Prompt Deteniendo el connection pool...

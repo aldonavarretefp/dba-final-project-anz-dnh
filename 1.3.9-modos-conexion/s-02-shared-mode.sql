@@ -4,7 +4,7 @@
 
 whenever sqlerror exit rollback;
 
-spool s-41-shared-mode.log
+spool s-02-shared-mode.log
 prompt Conectando con sys
 connect sys/system1 as sysdba;
 prompt Configurando la instancia para habilitar el modo compartido.

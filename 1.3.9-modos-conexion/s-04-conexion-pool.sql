@@ -6,7 +6,7 @@ whenever sqlerror exit rollback;
 Prompt Conectando como usuario sys...
 connect sys/system1 as sysdba
 
-spool s-42-conexion-pool.log
+spool s-04-conexion-pool.log
 
 --B. Iniciar un nuevo connection pool. Por default la BD cuenta con un connection pool
 --llamado SYS_DEFAULT_CONNECTION_POOL. Ejecutar la siguiente instrucción para
