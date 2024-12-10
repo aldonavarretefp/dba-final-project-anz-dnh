@@ -5,7 +5,8 @@ set serveroutput on
 
 ----------------------------------- Modulo 1. Usuarios y Transacciones -----------------------------------
 alter session set container = naproynu_modulo_1;
-connect usermod1/usermod1@naproynu_modulo_1 
+connect usermod1/usermod1@naproynu_modulo_1;
+ALTER SESSION SET NLS_DATE_FORMAT = 'DD/MM/YYYY'; 
 
 insert into CLIENT (CLIENT_USER_ID, CLIENT_NAME, CLIENT_LASTNAME, CLIENT_PHOTO, CLIENT_BIRTHDATE, CLIENT_ADDRESS, CLIENT_LATITUDE, CLIENT_LONGITUDE) values (1, 'Andy', 'Kuzma', EMPTY_BLOB(), '24/09/1944', '56 Superior Circle', 40.81609, 140.37539);
 insert into CLIENT (CLIENT_USER_ID, CLIENT_NAME, CLIENT_LASTNAME, CLIENT_PHOTO, CLIENT_BIRTHDATE, CLIENT_ADDRESS, CLIENT_LATITUDE, CLIENT_LONGITUDE) values (2, 'Cedric', 'Jambrozek', EMPTY_BLOB(), '21/09/1974', '9 Brickson Park Point', 45.616422, -122.5804528);
