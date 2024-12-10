@@ -71,9 +71,9 @@ Proponer una configuración inicial y llenar la siguiente tabla:
 
 | Configuración | Descripción y/o configuración |
 |---------------|------------------------------|
-| Número y ubicación de los archivos de control | Los archivos de control no deberían ubicarse en los mismos discos donde se encuentran los Redo Logs y data files. Los guardaremos en la FRA. |
+| Número y ubicación de los archivos de control | Los archivos de control no deberían ubicarse en los mismos discos donde se encuentran los Redo Logs y data files. Es por eso que los decidimos poner (3) en `/unam/bda/proyecto-final/disk/d01/app/oracle/oradata/FREE/`|
 | Propuesta de grupos de REDO | Un miembro de cada grupo deberá ubicarse en la FRA. No olvidar: Los data files no deberían ubicarse en los mismos discos donde se encuentran los Redo Logs y archivos de control. |
-| Propuesta de juego de caracteres | El juego de caracteres deberá ser `AL32UTF8`. Debido a que se trata de un proyecto de base de datos para un sistema de pedidos de comida, es importante que se soporten caracteres especiales. |
+| Propuesta de juego de caracteres | El juego de caracteres será `AL32UTF8`. Debido a que se trata de un proyecto de base de datos para un sistema de pedidos de comida, es importante que se soporten caracteres especiales. |
 | Tamaño del bloque de datos | Se recomienda emplear un tamaño de bloque de 8 KB. |
 | Lista de parámetros que serán configurados al crear la base de datos | Especificar nombre y valor. |
 | Archivo de passwords | Indicar los usuarios que contendrá este archivo de forma inicial. Como requisito indispensable, deberá existir un usuario diferente a `sys` que será el encargado de realizar la administración de backups. |
@@ -120,29 +120,60 @@ Con base al modelo relacional realizado anteriormente realizar una distribución
 
 Con base a las reglas de negocio del caso de estudio asignado generar una lista de índices que serían considerados como necesarios para implementar reglas de negocio que requieran valores únicos, o para mejorar desempeño. Por ejemplo, indexar FKs, índices basados en funciones, etc. Llenar la siguiente tabla
 
+
 | Módulo | Nombre de la tabla | Nombre del índice | Tipo | Propósito |
 |--------|--------------------|-------------------|------|-----------|
-| Gestión de Usuarios y Transacciones | BANK | BANK_PK |  |  |
-|  |  |  |  |  |
-|  |  |  |  |  |
-|  |  |  |  |  |
-|  |  |  |  |  |
-|  |  |  |  |  |
-|  |  |  |  |  |
-|  |  |  |  |  |
-|  |  |  |  |  |
-|  |  |  |  |  |
-|  |  |  |  |  |
-|  |  |  |  |  |
-|  |  |  |  |  |
-|  |  |  |  |  |
-|  |  |  |  |  |
-|  |  |  |  |  |
-|  |  |  |  |  |
-|  |  |  |  |  |
-|  |  |  |  |  |
-|  |  |  |  |  |
-|  |  |  |  |  |
+| Gestión de Usuarios y Transacciones | BANK | BANK_PK | UNIQUE | Garantizar unicidad de la PK (BANK_ID) |
+| Gestión de Usuarios y Transacciones | USERVF | USER_PK | UNIQUE | PK de USERVF (USER_ID) |
+| Gestión de Usuarios y Transacciones | USERVF | UIDX_USER_USERNAME | UNIQUE | Garantizar unicidad del nombre de usuario (USER_USERNAME) |
+| Gestión de Usuarios y Transacciones | USERVF | UIDX_USER_EMAIL | UNIQUE | Garantizar unicidad del correo electrónico (USER_EMAIL) |
+| Gestión de Usuarios y Transacciones | CLIENT | CLIENT_PK | UNIQUE | PK de CLIENT (CLIENT_USER_ID) |
+| Gestión de Usuarios y Transacciones | CARD | CARD_PK | UNIQUE | PK de CARD (CARD_ID) |
+| Gestión de Usuarios y Transacciones | CARD | IDX_CARD_CLIENT_ID | NON-UNIQUE | Mejorar desempeño en búsquedas por CLIENT_USER_ID |
+| Gestión de Usuarios y Transacciones | DEALER | DEALER_PK | UNIQUE | PK de DEALER (DEALER_USER_ID) |
+| Gestión de Usuarios y Transacciones | DEALER_BANK_DATA | DEALER_BANK_DATA_PK | UNIQUE | PK de DEALER_BANK_DATA (DEALER_BANK_DATA_ID) |
+| Gestión de Usuarios y Transacciones | DEALER_BANK_DATA | IDX_DEALER_BANK_DEALER_ID | NON-UNIQUE | Mejorar búsqueda por DEALER (DEALER_BANK_DEALER_ID) |
+| Gestión de Usuarios y Transacciones | DEALER_PAYMENT | DEALER_PAYMENT_PK | UNIQUE | PK de DEALER_PAYMENT (DEALER_PAYMENT_ID) |
+| Gestión de Usuarios y Transacciones | DEALER_PAYMENT | IDX_DEALER_PAYMENT_DEALER_ID | NON-UNIQUE | Búsqueda de pagos por DEALER (DEALER_PAYMENT_DEALER_ID) |
+| Gestión de Usuarios y Transacciones | DEALER_PAYMENT | IDX_DEALER_PAYMENT_DATE | NON-UNIQUE | Búsqueda de pagos por fecha (DEALER_PAYMENT_DATE) |
+| Gestión de Usuarios y Transacciones | LOCATION_LOG | LOCATION_LOG_PK | UNIQUE | PK de LOCATION_LOG (LOCATION_LOG_ID) |
+| Gestión de Usuarios y Transacciones | LOCATION_LOG | IDX_LOCATION_LOG_USER_ID | NON-UNIQUE | Filtrar logs por usuario (LOCATION_LOG_USER_ID) |
+| Gestión de Usuarios y Transacciones | LOCATION_LOG | IDX_LOCATION_LOG_TIMESTAMP | NON-UNIQUE | Búsqueda por fecha/hora (LOCATION_LOG_TIMESTAMP) |
+| Gestión de Usuarios y Transacciones | PROVIDER | PROVIDER_PK | UNIQUE | PK de PROVIDER (PROVIDER_USER_ID) |
+| Gestión de Usuarios y Transacciones | PROVIDER_BANK_DATA | PROVIDER_BANK_DATA_PK | UNIQUE | PK de PROVIDER_BANK_DATA (PROVIDER_BANK_DATA_ID) |
+| Gestión de Usuarios y Transacciones | PROVIDER_BANK_DATA | IDX_PROVIDER_BANK_DATA_PROVIDER_ID | NON-UNIQUE | Búsqueda por PROVIDER (PROVIDER_BANK_DATA_PROVIDER_ID) |
+| Gestión de Usuarios y Transacciones | PROVIDER_GALLERY | PROVIDER_GALLERY_PK | UNIQUE | PK de PROVIDER_GALLERY (PROVIDER_GALLERY_ID) |
+| Gestión de Usuarios y Transacciones | PROVIDER_GALLERY | IDX_PROVIDER_GALLERY_USER_ID | NON-UNIQUE | Búsqueda de galerías por PROVIDER (PROVIDER_GALLERY_USER_ID) |
+| Gestión de Usuarios y Transacciones | PROVIDER_PAYMENT | PROVIDER_PAYMENT_PK | UNIQUE | PK de PROVIDER_PAYMENT (PROVIDER_PAYMENT_ID) |
+| Gestión de Usuarios y Transacciones | PROVIDER_PAYMENT | IDX_PROVIDER_PAYMENT_USER_ID | NON-UNIQUE | Búsqueda de pagos por PROVIDER (PROVIDER_PAYMENT_USER_ID) |
+| Gestión de Usuarios y Transacciones | PROVIDER_PAYMENT | IDX_PROVIDER_PAYMENT_DATE | NON-UNIQUE | Búsqueda de pagos por fecha (PROVIDER_PAYMENT_DATE) |
+| Gestión de Órdenes y Platos | DISH_TYPE | DISH_TYPE_PK | UNIQUE | PK de DISH_TYPE (DISH_TYPE_ID) |
+| Gestión de Órdenes y Platos | DISH | DISH_PK | UNIQUE | PK de DISH (DISH_ID) |
+| Gestión de Órdenes y Platos | DISH | IDX_DISH_PROVIDER_USER_ID | NON-UNIQUE | Búsqueda de platos por proveedor (DISH_PROVIDER_USER_ID) |
+| Gestión de Órdenes y Platos | DISH | IDX_DISH_TYPE_CATEGORY | NON-UNIQUE | Búsqueda por tipo y categoría (DISH_TYPE_ID, DISH_CATEGORY) |
+| Gestión de Órdenes y Platos | DISH | IDX_DISH_CALORIES | NON-UNIQUE | Búsqueda por calorías (DISH_CALORIES) |
+| Gestión de Órdenes y Platos | DISH_GALLERY | DISH_GALLERY_PK | UNIQUE | PK de DISH_GALLERY (DISH_GALLERY_ID) |
+| Gestión de Órdenes y Platos | DISH_GALLERY | IDX_DISH_GALLERY_DISH_ID | NON-UNIQUE | Búsqueda de galerías por plato (DISH_GALLERY_DISH_ID) |
+| Gestión de Órdenes y Platos | DISH_PRICE_HISTORY | DISH_PRICE_HISTORY_PK | UNIQUE | PK de DISH_PRICE_HISTORY (DISH_PRICE_HISTORY_ID) |
+| Gestión de Órdenes y Platos | DISH_PRICE_HISTORY | IDX_DISH_PRICE_HISTORY_DISH_ID | NON-UNIQUE | Histórico de precios por plato (DISH_PRICE_HISTORY_DISH_ID) |
+| Gestión de Órdenes y Platos | DISH_REVIEW | DISH_REVIEW_PK | UNIQUE | PK de DISH_REVIEW (DISH_REVIEW_ID) |
+| Gestión de Órdenes y Platos | DISH_REVIEW | IDX_DISH_REVIEW_DISH_ID | NON-UNIQUE | Búsqueda de reseñas por plato (DISH_REVIEW_DISH_ID) |
+| Gestión de Órdenes y Platos | DISH_REVIEW | IDX_DISH_REVIEW_USER_ID | NON-UNIQUE | Búsqueda de reseñas por usuario (DISH_REVIEW_USER_ID) |
+| Gestión de Órdenes y Platos | ORDER_STATUS | ORDER_STATUS_PK | UNIQUE | PK de ORDER_STATUS (ORDER_STATUS_ID) |
+| Gestión de Órdenes y Platos | ORDERVF (ORDER) | ORDER_PK | UNIQUE | PK de ORDERVF (ORDER_ID) |
+| Gestión de Órdenes y Platos | ORDERVF (ORDER) | IDX_ORDER_CLIENT_ID | NON-UNIQUE | Búsqueda de órdenes por cliente (ORDER_CLIENT_ID) |
+| Gestión de Órdenes y Platos | ORDERVF (ORDER) | IDX_ORDER_DEALER_ID | NON-UNIQUE | Búsqueda de órdenes por dealer (ORDER_DEALER_ID) |
+| Gestión de Órdenes y Platos | ORDERVF (ORDER) | IDX_ORDER_CLIENT_STATUS | NON-UNIQUE | Búsqueda combinada por cliente y status (ORDER_CLIENT_ID, ORDER_STATUS_ID) |
+| Gestión de Órdenes y Platos | ORDERVF (ORDER) | IDX_ORDER_DATE | NON-UNIQUE | Búsqueda por fecha de orden (ORDER_DATE) |
+| Gestión de Órdenes y Platos | ORDERVF (ORDER) | IDX_ORDER_AMOUNT | NON-UNIQUE | Búsqueda por monto de orden (ORDER_AMOUNT) |
+| Gestión de Órdenes y Platos | ORDER_DISH | ORDER_DISH_PK | UNIQUE | PK de ORDER_DISH (ORDER_DISH_ID) |
+| Gestión de Órdenes y Platos | ORDER_DISH | IDX_ORDER_DISH_DISH_ID | NON-UNIQUE | Búsqueda por plato en la orden (ORDER_DISH_DISH_ID) |
+| Gestión de Órdenes y Platos | ORDER_DISH | IDX_ORDER_DISH_QUANTITY | NON-UNIQUE | Búsqueda por cantidad (ORDER_DISH_QUANTITY) |
+| Gestión de Órdenes y Platos | ORDER_REVIEW | ORDER_REVIEW_PK | UNIQUE | PK de ORDER_REVIEW (ORDER_REVIEW_ID) |
+| Gestión de Órdenes y Platos | ORDER_STATUS_HISTORY | ORDER_STATUS_HISTORY_PK | UNIQUE | PK de ORDER_STATUS_HISTORY (ORDER_STATUS_HISTORY_ID) |
+| Gestión de Órdenes y Platos | ORDER_STATUS_HISTORY | IDX_ORDER_STATUS_HISTORY_ORDER_ID | NON-UNIQUE | Búsqueda de historial por orden (ORDER_STATUS_HISTORY_ORDER_ID) |
+| Gestión de Órdenes y Platos | ORDER_STATUS_HISTORY | IDX_ORDER_STATUS_HISTORY_STATUS_ID | NON-UNIQUE | Búsqueda de historial por status (ORDER_STATUS_HISTORY_STATUS_ID) |
+| Gestión de Órdenes y Platos | ORDER_STATUS_HISTORY | IDX_ORDER_STATUS_HISTORY_DATE | NON-UNIQUE | Búsqueda por fecha de cambio de estado (ORDER_STATUS_HISTORY_DATE) |
  
 ### 1.3.6. Diseño de tablespaces
 
@@ -158,15 +189,42 @@ En esta tabla se documentan los tablespaces comunes a los módulos.
 
 #### 1.3.6.1 Tablespaces comunes
 
+
+
 | Nombre del tablespace | Configuración |
 |-----------------------|---------------|
 |                       |Especificar: Big File o múltiple data files, tamaño, tipo de administración de segmentos y extensiones, ubicación de sus data files.         |
+
+| Nombre del tablespace | Configuración |
+|-----------------------|---------------|
+| SYSTEM                | Ubicación: Por defecto en el directorio de instalación de la BD, ej: `/u01/app/oracle/oradata/naproynu_pdb/system01.dbf`. Tamaño y configuración definidos al crear la BD. Extent Management Local, Segment Space Management Auto. |
+| SYSAUX                | Ubicación: Por defecto, por ejemplo: `/u01/app/oracle/oradata/naproynu_pdb/sysaux01.dbf`. Configuración similar a SYSTEM. |
+| UNDO                  | Ubicación: `/u01/app/oracle/oradata/naproynu_pdb/undotbs01.dbf`. Local autoallocate, Autoextend On, utilizado para transacciones. |
+| TEMP                  | Ubicación: `/u01/app/oracle/oradata/naproynu_pdb/temp01.dbf`. Temporary tablespace. Autoextend On según configuración base. |
+
 #### 1.3.6.2 Tablespaces por módulo
 
 | Módulo | Nombre del tablespace | Objetivo / Beneficio | Configuración |
-|--------|-----------------------|----------------------|---------------|
-|        |                       |                      | Especificar: Big File o múltiple data files, tamaño, tipo de administración de segmentos y extensiones, ubicación de sus data files. |
-|        |                       |                      |               |
+|--------|------------------------|----------------------|--------------|
+| Gestión de Usuarios y Transacciones | TS_USERS_DATA          | Almacenar datos de usuario, cliente, dealer, provider, etc. | Rutas: `/unam/bda/proyecto-final/d11/TS_USERS_DATA01.dbf size 100M`, `/unam/bda/proyecto-final/d12/TS_USERS_DATA02.dbf size 100M`, `/unam/bda/proyecto-final/d13/TS_USERS_DATA03.dbf size 100M`. Autoextend on next 50M maxsize 500M, extent management local autoallocate, segment space management auto. |
+| Gestión de Usuarios y Transacciones | TS_USERS_BLOB          | Almacenar BLOBs de usuarios y proveedores (fotos, logos). | Ruta: `/unam/bda/proyecto-final/d14/TS_USERS_BLOB01.dbf size 1G`. Bigfile tablespace, extent management local autoallocate. |
+| Gestión de Usuarios y Transacciones | TS_USERS_INDEX         | Almacenar índices de tablas de usuarios.                  | Rutas: `/unam/bda/proyecto-final/d11/TS_USERS_INDEX01.dbf size 100M`, `/unam/bda/proyecto-final/d12/TS_USERS_INDEX02.dbf size 100M`. Autoextend on next 50M maxsize 200M. |
+| Gestión de Usuarios y Transacciones | TS_PAYMENTS_DATA       | Almacenar datos de pagos, bancos, tarjetas, etc.          | Rutas: `/unam/bda/proyecto-final/d11/TS_PAYMENTS_DATA01.dbf size 100M`, `/unam/bda/proyecto-final/d12/TS_PAYMENTS_DATA02.dbf size 100M`, `/unam/bda/proyecto-final/d13/TS_PAYMENTS_DATA03.dbf size 100M`. Autoextend on next 50M maxsize 300M. |
+| Gestión de Usuarios y Transacciones | TS_PAYMENTS_INDEX      | Índices de tablas de pagos.                               | Rutas: `/unam/bda/proyecto-final/d11/TS_PAYMENTS_INDEX01.dbf size 50M`, `/unam/bda/proyecto-final/d12/TS_PAYMENTS_INDEX02.dbf size 50M`. Autoextend on next 25M maxsize 100M. |
+| Gestión de Usuarios y Transacciones | TS_PAYMENTS_HISTORY    | Datos históricos de pagos.                                | Rutas: `/unam/bda/proyecto-final/d11/TS_PAYMENTS_HISTORY01.dbf size 100M`, `/unam/bda/proyecto-final/d12/TS_PAYMENTS_HISTORY02.dbf size 100M`, `/unam/bda/proyecto-final/d13/TS_PAYMENTS_HISTORY03.dbf size 100M`. Autoextend on next 50M maxsize 300M. |
+| Gestión de Usuarios y Transacciones | TS_LOCATION_DATA       | Datos de localización (LOCATION_LOG).                     | Rutas: `/unam/bda/proyecto-final/d11/TS_LOCATION_DATA01.dbf size 100M`, `/unam/bda/proyecto-final/d12/TS_LOCATION_DATA02.dbf size 100M`. Autoextend on next 50M maxsize 400M. |
+| Gestión de Usuarios y Transacciones | TS_LOCATION_INDEX      | Índices de LOCATION_LOG.                                  | Ruta: `/unam/bda/proyecto-final/d11/TS_LOCATION_INDEX01.dbf size 50M`. Autoextend on next 10M maxsize 100M. |
+Módulo 2: Órdenes y Platos
+
+Módulo	Nombre del tablespace	Objetivo / Beneficio	Configuración
+| Módulo                      | Nombre del tablespace | Objetivo / Beneficio                          | Configuración                                                                                                           |
+|-----------------------------|-----------------------|-----------------------------------------------|------------------------------------------------------------------------------------------------------------------------|
+| Gestión de Órdenes y Platos | TS_DISH_DATA          | Datos de platos, tipos, historial, reseñas.   | Rutas: `/unam/bda/proyecto-final/d15/TS_DISH_DATA01.dbf size 100M`, `/unam/bda/proyecto-final/d16/TS_DISH_DATA02.dbf size 100M`, `/unam/bda/proyecto-final/d17/TS_DISH_DATA03.dbf size 100M`. Autoextend on next 50M maxsize 300M. |
+| Gestión de Órdenes y Platos | TS_DISH_BLOB          | BLOBs de galerías de platos y videos. Bigfile.| Ruta: `/unam/bda/proyecto-final/d18/TS_DISH_BLOB01.dbf size 1G`. Bigfile, extent management local autoallocate.        |
+| Gestión de Órdenes y Platos | TS_DISH_INDEX         | Índices de DISH y tablas relacionadas.        | Ruta: `/unam/bda/proyecto-final/d15/TS_DISH_INDEX01.dbf size 50M`. Autoextend on next 10M maxsize 100M.                |
+| Gestión de Órdenes y Platos | TS_ORDERS_DATA        | Datos de órdenes, status, historial de órdenes.| Rutas: `/unam/bda/proyecto-final/d15/TS_ORDERS_DATA01.dbf size 100M`, `/unam/bda/proyecto-final/d16/TS_ORDERS_DATA02.dbf size 100M`, `/unam/bda/proyecto-final/d17/TS_ORDERS_DATA03.dbf size 100M`. Autoextend on next 50M maxsize 300M. |
+| Gestión de Órdenes y Platos | TS_ORDERS_BLOB        | BLOB con firmas digitales de las órdenes. Bigfile.| Ruta: `/unam/bda/proyecto-final/d19/TS_ORDERS_BLOB01.dbf size 1000M`. Bigfile, extent management local autoallocate. |
+| Gestión de Órdenes y Platos | TS_ORDERS_INDEX       | Índices para mejorar búsqueda en órdenes.     | Ruta: `/unam/bda/proyecto-final/d15/TS_ORDERS_INDEX01.dbf size 50M`. Autoextend on next 10M maxsize 100M.              |
 
 #### 1.3.6.3. Asignación de tablespace por objeto y módulo
 
@@ -176,6 +234,18 @@ Con base al diseño de tablespaces propuesto, cada módulo estará formado por v
 |--------|------------------|---------------------|-----------------------|
 |        |                  |                     |                       |
 |        |                  |                     |                       |
+
+Módulo 1: Gestión de Usuarios y Transacciones
+
+Módulo	Tipo de segmento	Nombre del segmento (tabla/índice/objeto)	Nombre del tablespace
+Gestión de Usuarios y Transacciones	Tabla (Datos)	USERVF, CLIENT, DEALER, PROVIDER, BANK, CARD, DEALER_BANK_DATA, PROVIDER_BANK_DATA	TS_USERS_DATA
+Gestión de Usuarios y Transacciones	Tabla (Datos)	DEALER_PAYMENT, PROVIDER_PAYMENT (Históricos)	TS_PAYMENTS_HISTORY
+Gestión de Usuarios y Transacciones	Tabla (Datos)	LOCATION_LOG	TS_LOCATION_DATA
+Gestión de Usuarios y Transacciones	Índice	Índices de USERVF y CLIENT (ej. USER_PK, UIDX_USER_USERNAME, UIDX_USER_EMAIL, CLIENT_PK)	TS_USERS_INDEX
+Gestión de Usuarios y Transacciones	Índice	Índices de DEALER, PROVIDER, BANK, CARD, DEALER_BANK_DATA, PROVIDER_BANK_DATA (ej. DEALER_PK, CARD_PK)	TS_USERS_INDEX
+Gestión de Usuarios y Transacciones	Índice	Índices de pagos (ej. IDX_CARD_CLIENT_ID, IDX_DEALER_BANK_DEALER_ID, IDX_PROVIDER_BANK_DATA_PROVIDER_ID, IDX_PROVIDER_PAYMENT_DATE, etc.)	TS_PAYMENTS_INDEX
+Gestión de Usuarios y Transacciones	Índice	Índices de ubicación (LOCATION_LOG) (ej. IDX_LOCATION_LOG_USER_ID, IDX_LOCATION_LOG_TIMESTAMP)	TS_LOCATION_INDEX
+Gestión de Usuarios y Transacciones	BLOB	CLIENT_PHOTO, DEALER_PHOTO, DEALER_MOTORCYCLE_PHOTO, PROVIDER_LOGO, PROVIDER_GALLERY_PHOTO	TS_USERS_BLOB
 
 ### 1.3.8. Generación del código DDL para el modelo relacional
 
