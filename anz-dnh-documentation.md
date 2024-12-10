@@ -189,12 +189,6 @@ En esta tabla se documentan los tablespaces comunes a los módulos.
 
 #### 1.3.6.1 Tablespaces comunes
 
-
-
-| Nombre del tablespace | Configuración |
-|-----------------------|---------------|
-|                       |Especificar: Big File o múltiple data files, tamaño, tipo de administración de segmentos y extensiones, ubicación de sus data files.         |
-
 | Nombre del tablespace | Configuración |
 |-----------------------|---------------|
 | SYSTEM                | Ubicación: Por defecto en el directorio de instalación de la BD, ej: `/u01/app/oracle/oradata/naproynu_pdb/system01.dbf`. Tamaño y configuración definidos al crear la BD. Extent Management Local, Segment Space Management Auto. |
@@ -271,16 +265,30 @@ NAPROYNU_MODULO_2_POOLED
 ### 1.3.10. Habilitar la FRA
 - Habilitar la FRA, realizar un cálculo estimado de su tamaño con base a la cantidad de datos que se pretenden almacenar (ver siguientes secciones).
 
-Cálculo del espacio requerido para la FRA 
-TODO: Cálcular el espacio requerido para la FRA
-$$ 
-\displaystyle
-\left( \sum_{k=1}^n a_k b_k \right)^2
-\leq
-\left( \sum_{k=1}^n a_k^2 \right)
-\left( \sum_{k=1}^n b_k^2 \right)
-$$
+Componentes para el cálculo de la FRA
+1.	Tamaño de una copia de la base de datos:
+- Los datos estructurados y multimedia ocupan alrededor de **293 GB** anuales.
+2. Tamaño de un backup incremental:
+-	Estimamos que los cambios diarios (10,000 pedidos, registros de ubicación, etc.) equivalen a **1 GB** diarios.
+-	En nuestro caso haremos un backup incremental diario.
+3.	Tamaño de (n+1) días de archive redo logs:
+- Con 10,000 pedidos diarios, los redo logs podrían sumar unos 2 GB diarios.
+-	Si n = 1, entonces necesitamos 2 días de redo logs: 2 GB × 2 = **4 GB**.
+4.	Tamaño del control file: 19MB
+-	El tamaño de los control files es de **19 GB**.
+5.	Tamaño de un miembro de los redo logs × número de miembros: 
+- Cada redo log tiene un tamaño de 51MB, y nuestro sistema usa 3 miembros:
+  -	51 MB × 3 = **153 MB**.
+6.	Tamaño de los flashback logs:
+-	El volumen de los flashback logs es aproximadamente del mismo orden en magnitud de la cantidad de Redo generado: **2 GB** diarios.
 
+Cálculo total del tamaño de la FRA:
+
+diskQuota = tamaño de copia de BD + backup incremental + archive redo logs + control file + redo logs + flashback logs
+
+**Total: 300.2 GB**
+
+Por cuestiones de almacenamiento disponible, únicamente utilizaremos **3 GB**.
 
 #### 1.3.11. Modo archivelog
 - La ubicación propuesta para las dos ubicaciónes es
