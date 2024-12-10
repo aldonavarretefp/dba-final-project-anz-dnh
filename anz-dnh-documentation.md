@@ -53,15 +53,15 @@ El encabezado eligo es el siguiente para todos los scripts:
 
 | Nombre del script                | Descripción                                |
 |----------------------------------|--------------------------------------------|
-| e-00-crea-contenedor.sh          | Creación del contenedor base Docker.       |
-| e-01-crea-loop-devices-host-root.sh | Creación de dispositivos de loop en el host. |
-| e-02-crea-pwdfile-oracle.sh      | Creación del archivo de contraseñas para Oracle. |
-| e-03-crea-pfile-oracle.sh        | Creación del archivo PFILE con configuración básica. |
-| e-04-crea-spfile-ordinario.sql   | Creación del archivo SPFILE a partir del PFILE. |
-| e-05-crea-directorios-root.sh    | Configuración de directorios para data files y redo logs. |
-| e-06-crea-bd-ordinario.sql       | Creación de la base de datos Oracle.       |
-| e-07-crea-diccionario-datos-oracle.sh | Creación del diccionario de datos Oracle. |
-| s-08-crea-pdb-ordinario.sql      | Creación de la base de datos pluggable (PDB). |
+| `e-00-crea-contenedor.sh          | Creación del contenedor base Docker.       |
+| `e-01-crea-loop-devices-host-root.sh | Creación de dispositivos de loop en el host. |
+| `e-02-crea-pwdfile-oracle.sh      | Creación del archivo de contraseñas para Oracle. |
+| `e-03-crea-pfile-oracle.sh        | Creación del archivo PFILE con configuración básica. |
+| `e-04-crea-spfile-ordinario.sql   | Creación del archivo SPFILE a partir del PFILE. |
+| `e-05-crea-directorios-root.sh    | Configuración de directorios para data files y redo logs. |
+| `e-06-crea-bd-ordinario.sql       | Creación de la base de datos Oracle.       |
+| `e-07-crea-diccionario-datos-oracle.sh | Creación del diccionario de datos Oracle. |
+| `s-08-crea-pdb-ordinario.sql      | Creación de la base de datos pluggable (PDB). |
 
 ### 1.3.2. Configuraciones iniciales para crear la nueva base de datos
 - Crear una nueva base de datos empleando como nombre `<iniciales>proy<iniciales>` (para nuestro caso, sería `naproynu`).
@@ -230,43 +230,28 @@ Módulo	Nombre del tablespace	Objetivo / Beneficio	Configuración
 
 Con base al diseño de tablespaces propuesto, cada módulo estará formado por varios tablespaces. En cada módulo existirán segmentos de diferente tipo (tablas, índices, particiones, objetos blob/clob) que requieren la asignación de su correspondiente tablespace. En esta tabla se podrá realizar una propuesta de distribución de los diferentes segmentos empleando los tablespaces definidos anteriormente.
 
-| Módulo | Tipo de segmento | Nombre del segmento | Nombre del tablespace |
-|--------|------------------|---------------------|-----------------------|
-|        |                  |                     |                       |
-|        |                  |                     |                       |
-
 Módulo 1: Gestión de Usuarios y Transacciones
+| Módulo                          | Tipo de segmento | Nombre del segmento (tabla/índice/objeto)                                                                 | Nombre del tablespace    |
+|---------------------------------|------------------|-----------------------------------------------------------------------------------------------------------|--------------------------|
+| Gestión de Usuarios y Transacciones | Tabla (Datos)    | USERVF, CLIENT, DEALER, PROVIDER, BANK, CARD, DEALER_BANK_DATA, PROVIDER_BANK_DATA                          | TS_USERS_DATA            |
+| Gestión de Usuarios y Transacciones | Tabla (Datos)    | DEALER_PAYMENT, PROVIDER_PAYMENT (Históricos)                                                              | TS_PAYMENTS_HISTORY      |
+| Gestión de Usuarios y Transacciones | Tabla (Datos)    | LOCATION_LOG                                                                                               | TS_LOCATION_DATA         |
+| Gestión de Usuarios y Transacciones | Índice           | Índices de USERVF y CLIENT (ej. USER_PK, UIDX_USER_USERNAME, UIDX_USER_EMAIL, CLIENT_PK)                    | TS_USERS_INDEX           |
+| Gestión de Usuarios y Transacciones | Índice           | Índices de DEALER, PROVIDER, BANK, CARD, DEALER_BANK_DATA, PROVIDER_BANK_DATA (ej. DEALER_PK, CARD_PK)      | TS_USERS_INDEX           |
+| Gestión de Usuarios y Transacciones | Índice           | Índices de pagos (ej. IDX_CARD_CLIENT_ID, IDX_DEALER_BANK_DEALER_ID, IDX_PROVIDER_BANK_DATA_PROVIDER_ID, IDX_PROVIDER_PAYMENT_DATE, etc.) | TS_PAYMENTS_INDEX        |
+| Gestión de Usuarios y Transacciones | Índice           | Índices de ubicación (LOCATION_LOG) (ej. IDX_LOCATION_LOG_USER_ID, IDX_LOCATION_LOG_TIMESTAMP)              | TS_LOCATION_INDEX        |
+| Gestión de Usuarios y Transacciones | BLOB             | CLIENT_PHOTO, DEALER_PHOTO, DEALER_MOTORCYCLE_PHOTO, PROVIDER_LOGO, PROVIDER_GALLERY_PHOTO                  | TS_USERS_BLOB            |
 
-Módulo	Tipo de segmento	Nombre del segmento (tabla/índice/objeto)	Nombre del tablespace
-Gestión de Usuarios y Transacciones	Tabla (Datos)	USERVF, CLIENT, DEALER, PROVIDER, BANK, CARD, DEALER_BANK_DATA, PROVIDER_BANK_DATA	TS_USERS_DATA
-Gestión de Usuarios y Transacciones	Tabla (Datos)	DEALER_PAYMENT, PROVIDER_PAYMENT (Históricos)	TS_PAYMENTS_HISTORY
-Gestión de Usuarios y Transacciones	Tabla (Datos)	LOCATION_LOG	TS_LOCATION_DATA
-Gestión de Usuarios y Transacciones	Índice	Índices de USERVF y CLIENT (ej. USER_PK, UIDX_USER_USERNAME, UIDX_USER_EMAIL, CLIENT_PK)	TS_USERS_INDEX
-Gestión de Usuarios y Transacciones	Índice	Índices de DEALER, PROVIDER, BANK, CARD, DEALER_BANK_DATA, PROVIDER_BANK_DATA (ej. DEALER_PK, CARD_PK)	TS_USERS_INDEX
-Gestión de Usuarios y Transacciones	Índice	Índices de pagos (ej. IDX_CARD_CLIENT_ID, IDX_DEALER_BANK_DEALER_ID, IDX_PROVIDER_BANK_DATA_PROVIDER_ID, IDX_PROVIDER_PAYMENT_DATE, etc.)	TS_PAYMENTS_INDEX
-Gestión de Usuarios y Transacciones	Índice	Índices de ubicación (LOCATION_LOG) (ej. IDX_LOCATION_LOG_USER_ID, IDX_LOCATION_LOG_TIMESTAMP)	TS_LOCATION_INDEX
-Gestión de Usuarios y Transacciones	BLOB	CLIENT_PHOTO, DEALER_PHOTO, DEALER_MOTORCYCLE_PHOTO, PROVIDER_LOGO, PROVIDER_GALLERY_PHOTO	TS_USERS_BLOB
+Módulo 2: Gestión de Órdenes y Platos
+| Módulo                      | Tipo de segmento | Nombre del segmento (tabla/índice/objeto)                                                                 | Nombre del tablespace    |
+|-----------------------------|------------------|-----------------------------------------------------------------------------------------------------------|--------------------------|
+| Gestión de Órdenes y Platos | Tabla (Datos)    | DISH, DISH_TYPE, DISH_PRICE_HISTORY, DISH_REVIEW                                                          | TS_DISH_DATA             |
+| Gestión de Órdenes y Platos | Tabla (Datos)    | ORDERVF (ORDER), ORDER_DISH, ORDER_REVIEW, ORDER_STATUS, ORDER_STATUS_HISTORY                              | TS_ORDERS_DATA           |
+| Gestión de Órdenes y Platos | Índice           | Índices de DISH, DISH_GALLERY, DISH_PRICE_HISTORY, DISH_REVIEW (ej. DISH_PK, IDX_DISH_TYPE_CATEGORY)       | TS_DISH_INDEX            |
+| Gestión de Órdenes y Platos | Índice           | Índices de ORDERVF (ORDER), ORDER_DISH, ORDER_STATUS_HISTORY (ej. ORDER_PK, IDX_ORDER_CLIENT_ID)           | TS_ORDERS_INDEX          |
+| Gestión de Órdenes y Platos | BLOB             | DISH_VIDEO, DISH_GALLERY_PHOTO                                                                             | TS_DISH_BLOB             |
+| Gestión de Órdenes y Platos | BLOB             | ORDER_DIG_SIGNATURE                                                                                        | TS_ORDERS_BLOB           |
 
-### 1.3.8. Generación del código DDL para el modelo relacional
-
-A partir del modelo relacional generado anteriormente, realizar las siguientes acciones en ER-Studio:
-
-- Crear un nuevo modelo lógico por cada uno de los módulos propuestos anteriormente.
-- Incluir en cada modelo lógico las tablas que le corresponden.
-- Crear un modelo físico a partir del modelo lógico para Oracle a partir de cada uno de los módulos (modelos lógicos creados en el punto anterior).
-- Los constraints deben ser creados como parte de la instrucción `CREATE TABLE`. Evitar el uso de `ALTER TABLE` para crear constraints.
-- Emplear las siguientes convenciones para realizar el nombrado de los constraints. Si el nombre es demasiado largo, pueden aplicar algunas abreviaturas que sean lo más claras posible.
-
-| Tipo de Constraint | Convención de nombrado |
-|--------------------|------------------------|
-| UNIQUE             | `<nombre_tabla>_<nombre_columna>_uk` |
-| PRIMARY KEY        | `<nombre_tabla>_<nombre_columna>_pk` |
-| FOREIGN KEY        | `<nombre_tabla_hija>_<nombre_columna>_fk` |
-| CHECK              | `<nombre_tabla>_<nombre_columna>_<chk>` |
-
-- Generar el código SQL empleando ER-Studio.
-- Editar el script generado para realizar las asignaciones de tablespaces tanto de
-tablas como para índices, PKs, índices tipo LOB.
 
 ### 1.3.9.Modos de conexión.
 - Realizar las configuraciones necesarias de tal forma que un usuario pueda conectarse a la instancia ya sea en modo compartido o en modo dedicado o a través de un pool de conexiones. La configuración por defecto deberá ser modo dedicado.
