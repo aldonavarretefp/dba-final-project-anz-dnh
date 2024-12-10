@@ -5,7 +5,7 @@ set serveroutput on
 
 ----------------------------------- Modulo 2. Órdenes y platos -----------------------------------
 alter session set container = naproynu_modulo_2;
-connect usermod2/usermod2 
+connect usermod2/usermod2@naproynu_modulo_2 
 
 insert into ORDER_DISH (ORDER_DISH_ID, ORDER_DISH_QUANTITY, ORDER_DISH_DISH_ID, ORDER_DISH_ORDER_ID) values (1, 9, 1, 1);
 insert into ORDER_DISH (ORDER_DISH_ID, ORDER_DISH_QUANTITY, ORDER_DISH_DISH_ID, ORDER_DISH_ORDER_ID) values (2, 2, 2, 2);

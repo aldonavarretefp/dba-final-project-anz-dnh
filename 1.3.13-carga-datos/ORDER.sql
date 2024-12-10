@@ -5,7 +5,7 @@ set serveroutput on
 
 ----------------------------------- Modulo 2. Órdenes y platos -----------------------------------
 alter session set container = naproynu_modulo_2;
-connect usermod2/usermod2 
+connect usermod2/usermod2@naproynu_modulo_2 
 
 insert into ORDERVF (ORDER_ID, ORDER_AMOUNT, ORDER_DATE, ORDER_FEE, ORDER_DELIVERY_COST, ORDER_STATUS_DATE, ORDER_RECEIPT_FOLIO, ORDER_DIG_SIGNATURE, ORDER_STATUS_ID, ORDER_CLIENT_ID, ORDER_DEALER_ID, ORDER_CARD_ID) values (1, 353.01, '19/08/2024', 7.04, 147.66, '13/09/2024', 43879620, EMPTY_BLOB(), 7, 1, 1, 1);
 insert into ORDERVF (ORDER_ID, ORDER_AMOUNT, ORDER_DATE, ORDER_FEE, ORDER_DELIVERY_COST, ORDER_STATUS_DATE, ORDER_RECEIPT_FOLIO, ORDER_DIG_SIGNATURE, ORDER_STATUS_ID, ORDER_CLIENT_ID, ORDER_DEALER_ID, ORDER_CARD_ID) values (2, 759.88, '09/04/2024', 85.92, 139.06, '06/12/2024', 70570580, EMPTY_BLOB(), 5, 2, 2, 2);

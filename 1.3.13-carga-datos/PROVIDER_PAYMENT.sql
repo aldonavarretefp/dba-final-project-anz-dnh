@@ -5,7 +5,7 @@ set serveroutput on
 
 ----------------------------------- Modulo 1. Usuarios y Transacciones -----------------------------------
 alter session set container = naproynu_modulo_1;
-connect usermod1/usermod1 
+connect usermod1/usermod1@naproynu_modulo_1 
 
 insert into PROVIDER_PAYMENT (PROVIDER_PAYMENT_ID, PROVIDER_PAYMENT_AMOUNT, PROVIDER_PAYMENT_DATE, PROVIDER_PAYMENT_USER_ID) values (1, 1990.42, '30/11/2024', 1);
 insert into PROVIDER_PAYMENT (PROVIDER_PAYMENT_ID, PROVIDER_PAYMENT_AMOUNT, PROVIDER_PAYMENT_DATE, PROVIDER_PAYMENT_USER_ID) values (2, 1525.7, '05/02/2024', 2);

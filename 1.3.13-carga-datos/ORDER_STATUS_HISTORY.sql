@@ -5,7 +5,7 @@ set serveroutput on
 
 ----------------------------------- Modulo 2. Órdenes y platos -----------------------------------
 alter session set container = naproynu_modulo_2;
-connect usermod2/usermod2 
+connect usermod2/usermod2@naproynu_modulo_2 
 
 insert into ORDER_STATUS_HISTORY (ORDER_STATUS_HISTORY_ID, ORDER_STATUS_HISTORY_DATE, ORDER_STATUS_HISTORY_ORDER_ID, ORDER_STATUS_HISTORY_STATUS_ID) values (1, '02/08/2024', 1, 6);
 insert into ORDER_STATUS_HISTORY (ORDER_STATUS_HISTORY_ID, ORDER_STATUS_HISTORY_DATE, ORDER_STATUS_HISTORY_ORDER_ID, ORDER_STATUS_HISTORY_STATUS_ID) values (2, '09/05/2024', 2, 3);

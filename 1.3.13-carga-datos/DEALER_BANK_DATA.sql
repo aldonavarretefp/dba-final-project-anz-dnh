@@ -5,7 +5,7 @@ set serveroutput on
 
 ----------------------------------- Modulo 1. Usuarios y Transacciones -----------------------------------
 alter session set container = naproynu_modulo_1;
-connect usermod1/usermod1 
+connect usermod1/usermod1@naproynu_modulo_1 
 
 insert into DEALER_BANK_DATA (DEALER_BANK_DATA_ID, DEALER_BANK_DATA_CLABE, DEALER_BANK_DATA_FREQUENCY, DEALER_BANK_DEALER_ID, DEALER_BANK_DATA_BANK_ID) values (1, '2768112612330928', 'WEEKLY', 1, 4);
 insert into DEALER_BANK_DATA (DEALER_BANK_DATA_ID, DEALER_BANK_DATA_CLABE, DEALER_BANK_DATA_FREQUENCY, DEALER_BANK_DEALER_ID, DEALER_BANK_DATA_BANK_ID) values (2, '5416155555510189', 'WEEKLY', 2, 5);

@@ -5,7 +5,7 @@ set serveroutput on
 
 ----------------------------------- Modulo 2. Órdenes y platos -----------------------------------
 alter session set container = naproynu_modulo_2;
-connect usermod2/usermod2 
+connect usermod2/usermod2@naproynu_modulo_2 
 
 insert into DISH_REVIEW (DISH_REVIEW_ID, DISH_REVIEW_RATE, DISH_REVIEW_COMMENT, DISH_REVIEW_DISH_ID, DISH_REVIEW_USER_ID) values (1, 1, 'LykbMxFpaRqxwQDLtQSmlZzBCfKHdtbJoRLLNldZRPpfQGRCaTMNKGIikKlFzfCYwDnzRaiCDvGjodTEiHyTBCpggfWWgvSubvcChkLsrxevLmCVCVwcBhUsSrsqXyqSlIyReyiqjusYLuOOttouzjRvFCOhODQOawphGrAKtILNwKbRemlsJBLwFRJrCYGhRawGNWtI', 1, 1);
 insert into DISH_REVIEW (DISH_REVIEW_ID, DISH_REVIEW_RATE, DISH_REVIEW_COMMENT, DISH_REVIEW_DISH_ID, DISH_REVIEW_USER_ID) values (2, 1, 'AIJkbYRaQqFNbBMbKlYEhvaDMyaQmZfsELZrCrhiMmLVWUikWFsnewrKYlgNhqsqNRTomAHTLsVZptZnlrOpUZIuaAtXyauKhIfpWJEGaXXSAlqqafNxtFAJbomydyPXoMmLJBkFobWJTmCXgfFFegCnHMmtMDLRvSSNVnzqfKZBBJVMFgMFDtIRwwYPZxrwUtFgrXQF', 2, 2);
