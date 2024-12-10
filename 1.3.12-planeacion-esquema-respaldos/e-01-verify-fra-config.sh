@@ -1,6 +1,6 @@
 #!/bin/bash
 set -e
-sqlplus / as sysdba <<EOF
+sqlplus sys/system1 as sysdba <<EOF
 Prompt 0. Conectando como sysdba
 connect sys/system1 as sysdba;
 Prompt 1.  Verificar configuración
