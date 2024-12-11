@@ -1,6 +1,0 @@
--- Este es un script para restaurar la base de datos para pruebas
-RUN {
-    -- Restaurar base de datos para pruebas
-    RESTORE DATABASE;
-    RECOVER DATABASE;
-}
