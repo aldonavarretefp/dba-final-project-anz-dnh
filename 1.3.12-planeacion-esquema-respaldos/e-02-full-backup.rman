@@ -1,7 +1,0 @@
-run {
-    -- Etiqueta para identificar el backup
-    BACKUP DATABASE PLUS ARCHIVELOG TAG 'FULL_BACKUP_WEEKLY'
-    FORMAT '/unam/proyecto-final/fast-recovery-area/weekly_backup_%U';
-    -- Eliminar archivelogs ya respaldados.
-    DELETE ARCHIVELOG ALL BACKED UP 2 TIMES TO DISK;
-}

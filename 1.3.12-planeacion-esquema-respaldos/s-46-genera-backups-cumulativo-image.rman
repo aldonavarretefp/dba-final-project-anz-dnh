@@ -1,9 +1,0 @@
-connect target "sys/system as sysdba"
-
-#E. Generando un image copy autos_full_copy_01
-backup as copy database tag boorproy_full_copy_01;
-
-#F. Generando backup incremental nivel 0 autos_full_bs_n0_01
-backup as backupset incremental level 0 database tag incremental_nivel_0_bs_n0_01; 
-
-backup as backupset incremental level 1 cumulative database tag cumulativo_nivel_1_bs_n1_cum_01 ;
