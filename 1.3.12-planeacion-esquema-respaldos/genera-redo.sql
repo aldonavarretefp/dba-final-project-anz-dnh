@@ -2,6 +2,14 @@
 --@Fecha creación:  07/12/2024
 --@Descripción:  Genera operaciones update, para generar datos REDO
 
+connect sys/system1 as sysdba
+
+whenever sqlerror exit rollback
+set serveroutput on
+
+alter session set container = naproynu_modulo_1;
+connect usermod1/usermod1@naproynu_modulo_1 
+
 SET SERVEROUTPUT ON
 
 DECLARE
@@ -55,3 +63,7 @@ BEGIN
   END LOOP;
 END;
 /
+
+Prompt Confirmando cambios
+commit;
+exit;
