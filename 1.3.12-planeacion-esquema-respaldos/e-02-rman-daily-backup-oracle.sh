@@ -1,6 +1,6 @@
 #!/bin/bash
 set -e
-rman target 'sys/system1 as sysdba' <<EOF
+rman target / <<EOF
 RUN {
     BACKUP INCREMENTAL LEVEL 1 DATABASE
         TAG 'DAILY_BACKUP'
