@@ -15,7 +15,7 @@ SET SERVEROUTPUT ON
 DECLARE
   v_count NUMBER;
 BEGIN
-  FOR i IN 1..300 LOOP
+  FOR i IN 1..3000 LOOP
     -- Actualizar CLIENT
     v_count := 0;
     FOR r IN (SELECT CLIENT_USER_ID, CLIENT_NAME, CLIENT_LASTNAME, CLIENT_BIRTHDATE, 
@@ -64,6 +64,4 @@ BEGIN
 END;
 /
 
-Prompt Confirmando cambios
-commit;
-exit;
+Prompt Confirmando ...
