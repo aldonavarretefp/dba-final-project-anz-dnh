@@ -347,3 +347,5 @@ backup as copy current controlfile format'/tmp/control01.ctl';
 backup as copy current controlfile format'/tmp/control01.ctl';
 backup device type sbt controlfilecopy'/tmp/control01.ctl';
 8.4.1.10. backup device type sbt spfile;
+
+tamaño de un archive redolog datos de carga de un día = 9.45MB de archive redolog
