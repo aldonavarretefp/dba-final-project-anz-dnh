@@ -8,8 +8,8 @@
 **Profesor:** Jorge Rodriguez Campos  
 **Materia:** Bases de Datos Avanzadas  
 **Alumnos:** Navarrete Zamora Aldo Yael, Nuñez Hernandez Diego Ignacio  
-**Fecha:** `<fecha>`  
-**Proyecto:** `<nombre-del-proyecto>`  
+**Fecha:** 2024-11-12  
+**Proyecto:** Proyecto Final de Base de Datos Avanzadas  
 **Semestre:** 2025-1
 
 <div style="page-break-after: always;"></div>
@@ -308,7 +308,7 @@ estrategia deberá incluir:
 - Tamaño total en espacio en disco disponible para realizar backups.
 
 **Propuesta**
-- Por la naturaleza de las pdbs en las que estamos desarrollando el proyecto y se parece a un ambiente de Uber Eats, hemos propuesto realizar backups incrementales de las pdbs.
+- Por la naturaleza de las pdbs en las que estamos desarrollando el proyecto y se parece a las aplicaciones populares de reparto de comida a domicilio, hemos propuesto realizar backups incrementales de las pdbs.
 - Para la frecuencia de repetición hemos decidido realizar backups incrementales diarios de las pdbs. Esto con el fin de tener un respaldo diario de los datos que se generan en la base de datos.
 - Para la ubicación de los respaldos hemos decidido almacenarlos en la FRA. Esto con el fin de tener un respaldo en caso de que se pierda la información de la base de datos.
 - Para la política de retención de backups hemos decidido mantener los backups incrementales diarios por 7 días. Recordando que una política de retención de backups es aquella que define cuánto tiempo se mantendrán los backups en el sistema. Nosotros hemos decidido mantener los backups incrementales diarios por 7 días.
@@ -326,28 +326,21 @@ configure retention policy.
 
 ##### Programación de respaldos
 
-| Fecha y hora | Datos REDO producidos (MB) | Fecha de Respaldo | Tipo de backup | Espacio requerido por el backup |
-|--------------|-----------------------------|-------------------|----------------|---------------------------------|
-|              |                             |                   |                |                                 |
-
-> 8.4.1.6.Respaldar archive redo logs
-El siguiente comando realiza un respaldo completo de la base de datos, realiza switch de
-los Redo logs e incluye los archived redo logs en el backup.
-backup database plus archivelog;
-8.4.1.7. Respaldar tablespaces
-backup device type disk tablespace users, tools;
-8.4.1.8.Respaldar datafiles
-backup device type sbt datafile 1,2,3,4 datafilecopy'/tmp/system01.dbf';
-8.4.1.9.Respaldar el archivo de control
-En caso de que la configuración configure controlfile autobackup no esté habilitada, se
-deben emplear alguna de las siguientes instrucciones para incluirlo en un backup.
-backup current controlfile
-backup device type sbt tablespace users include current controlfile;
-backup as copy current controlfile format'/tmp/control01.ctl';
-backup as copy current controlfile format'/tmp/control01.ctl';
-backup device type sbt controlfilecopy'/tmp/control01.ctl';
-8.4.1.10. backup device type sbt spfile;
-
-tamaño de un archive redolog datos de carga de un día = 9.45MB de archive redolog
-tamaño de backup = 1.02G
+| Fecha y hora | Datos REDO producidos (MB) | Fecha de Respaldo | Tipo de backup         | Espacio requerido por el backup |
+|--------------|----------------------------|-------------------|------------------------|-----------------------------------|
+| 10-DEC-24    | N/A                        | 10-DEC-24         | Incremental nivel 0    | 466.27 MB                         |
+| 10-DEC-24    | 1.12                       | 10-DEC-24         | Incremental nivel 0    | 1.12 MB                           |
+| 10-DEC-24    | 1.05                       | 10-DEC-24         | Incremental nivel 0    | 1.05 MB                           |
+| 10-DEC-24    | 1.05                       | 10-DEC-24         | Incremental nivel 0    | 1.05 MB                           |
+| 10-DEC-24    | 1.05                       | 10-DEC-24         | Incremental nivel 0    | 1.05 MB                           |
+| 10-DEC-24    | 1.18                       | 10-DEC-24         | Incremental nivel 0    | 1.18 MB                           |
+| 10-DEC-24    | 1.05                       | 10-DEC-24         | Incremental nivel 0    | 1.05 MB                           |
+| 10-DEC-24    | 1.05                       | 10-DEC-24         | Incremental nivel 0    | 1.05 MB                           |
+| 10-DEC-24    | 1.43                       | 10-DEC-24         | Incremental nivel 0    | 1.43 MB                           |
+| 10-DEC-24    | 2.32                       | 10-DEC-24         | Incremental nivel 0    | 2.32 MB                           |
+| 10-DEC-24    | 2.70                       | 10-DEC-24         | Incremental nivel 0    | 2.70 MB                           |
+| 10-DEC-24    | 3.80                       | 10-DEC-24         | Incremental nivel 0    | 3.80 MB                           |
+| 10-DEC-24    | N/A                        | 10-DEC-24         | Incremental nivel 1    | 1.20 MB                           |
+| 10-DEC-24    | N/A                        | 10-DEC-24         | Full backup            | 18.11 MB                          |
+| 10-DEC-24    | N/A                        | 10-DEC-24         | Full backup            | 18.11 MB                          |
 
