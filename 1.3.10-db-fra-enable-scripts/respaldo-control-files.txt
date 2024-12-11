@@ -1,0 +1,12 @@
+/unam/bda/proyecto-final/disk/
+d01/app/oracle/oradata/FREE/co
+ntrol01.ctl, /unam/bda/proyect
+o-final/disk/d02/app/oracle/or
+adata/FREE/control02.ctl, /una
+m/bda/proyecto-final/disk/d03/
+app/oracle/oradata/FREE/contro
+l03.ctl
+
+/unam/bda/proyecto-final/fast-
+recovery-area/FREE/controlfile
+/o1_mf_mol08goz_.ctl

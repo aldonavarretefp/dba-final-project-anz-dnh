@@ -1,0 +1,44 @@
+1. Conectando como sys empleando archivo de passwords
+Connected.
+
+
+
+2. Habilitando la FRA...
+
+System altered.
+
+
+System altered.
+
+3. Reiniciando la instancia para que los cambios tengan efecto...
+Database closed.
+Database dismounted.
+ORACLE instance shut down.
+ORACLE instance started.
+
+Total System Global Area  802283320 bytes
+Fixed Size                  5365560 bytes
+Variable Size             696254464 bytes
+Database Buffers           96468992 bytes
+Redo Buffers                4194304 bytes
+Database mounted.
+Database opened.
+Listo!
+4. Analizando los valores
+
+NAME                                 TYPE        VALUE
+------------------------------------ ----------- ------------------------------
+db_recovery_file_dest_size           big integer 10G
+
+NAME                                 TYPE        VALUE
+------------------------------------ ----------- ------------------------------
+db_recovery_file_dest                string      /unam/bda/proyecto-final/fast-
+                                                 recovery-area
+db_recovery_file_dest_size           big integer 10G
+
+NAME                                 TYPE        VALUE
+------------------------------------ ----------- ------------------------------
+db_flashback_retention_target        integer     1440
+Presiona enter para continuar...
+
+Script finalizado. Revisa el archivo anz-e-01-habilitar-fra-ordinario.txt para ver los resultados.
