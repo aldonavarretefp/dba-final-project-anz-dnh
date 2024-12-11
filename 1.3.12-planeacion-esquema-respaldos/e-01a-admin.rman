@@ -1,4 +1,4 @@
-RUN {
+run {
   configure retention policy to redundancy 2; -- Mantiene dos copias de cada archivo de respaldo
   configure controlfile autobackup on; -- Garantiza que el controlfile se respalde en cada backup
   configure controlfile autobackup format for device type disk to '/unam/bda/proyecto-final/backups/ctl_file%F.bkp'; -- Especifica el formato del controlfile
