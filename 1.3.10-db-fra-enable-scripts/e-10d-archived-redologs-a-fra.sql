@@ -11,4 +11,4 @@ FROM (
     FROM v$archived_log 
     ORDER BY sequence# DESC
 ) 
-WHERE rownum <= 4;
+WHERE rownum <= 4;        
