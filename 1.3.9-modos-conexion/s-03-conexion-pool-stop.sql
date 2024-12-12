@@ -1,6 +1,7 @@
---@Autor: Borboa Castillo Carlos Alfonso y Ortiz Rivera Miguel Ángel TODO
---@Fecha creación: 07/06/2024
+--@Autor: Navarrete Zamora Aldo Yael, Nuñez Hernandez Diego Ignacio
+--@Fecha creación: 07/11/2024
 --@Descripción: Detiene y resetea el modo pool
+
 whenever sqlerror exit rollback;
 
 Prompt Conectando como usuario sys...
@@ -18,7 +19,6 @@ exec dbms_connection_pool.alter_param ('','MAXSIZE','40');
 exec dbms_connection_pool.alter_param ('','MINSIZE','4');
 exec dbms_connection_pool.alter_param ('','INACTIVITY_TIMEOUT','300');
 exec dbms_connection_pool.alter_param ('','MAX_THINK_TIME','120');
-
 exec dbms_connection_pool.restore_defaults();
 
 Prompt Todo listo!

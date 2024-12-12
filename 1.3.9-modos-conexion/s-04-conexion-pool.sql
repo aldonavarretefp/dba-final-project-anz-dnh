@@ -1,5 +1,5 @@
---@Autor: Borboa Castillo Carlos Alfonso y Ortiz Rivera Miguel Ángel TODO
---@Fecha creación: 07/06/2024
+--@Autor: Navarrete Zamora Aldo Yael, Nuñez Hernandez Diego Ignacio
+--@Fecha creación: 07/11/2024
 --@Descripción: Configura modo pool
 whenever sqlerror exit rollback;
 

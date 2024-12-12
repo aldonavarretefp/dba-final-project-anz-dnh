@@ -1,5 +1,5 @@
 #!/bin/bash
-# @Autor: Borboa Castillo Carlos Alfonso, Ortiz Rivera Miguel Angel TODO: Cambiar por su nombre
+# @Autor: Navarrete Zamora Aldo Yael, Nuñez Hernandez Diego Ignacio TODO: Cambiar por su nombre
 # @Fecha: 07/06/2024 TODO: Cambiar por su nombre
 # @Descripcion: genera el directorio para guardar backups TODO: Cambiar por su nombre
 

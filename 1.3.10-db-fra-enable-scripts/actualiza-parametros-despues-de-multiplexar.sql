@@ -1,4 +1,4 @@
---@Autor: Borboa Castillo Carlos Alfonso, Ortiz Rivera Miguel Angel
+--@Autor: Navarrete Zamora Aldo Yael, Nuñez Hernandez Diego Ignacio
 --@Fecha: 03/06/2024
 --@Descripcion: modifica el parámetro control_files con las nuevas rutas y crea 2 miembros de redo log fuera de la FRA
 

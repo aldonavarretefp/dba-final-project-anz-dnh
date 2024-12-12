@@ -1,8 +1,7 @@
-#@Autor: <Nombre del autor o autores> 
-#@Fecha creación: <Fecha de creación> 
-#@Descripción: <Breve descripción del contenido del script>
+#@Autor: Navarrete Zamora Aldo Yael, Nuñez Hernandez Diego Ignacio
+#@Fecha creación: 11/11/2024
+#@Descripción: Este script crea 3 archivos img de 50M, los monta en loop devices y les da formato ext4, además crea 3 directorios para montar los loop devices y edita el archivo /etc/fstab para que se monten automáticamente al reiniciar el sistema.
 
-# Whenever this scripts fail it will stop
 set -e
 
 #!/bin/bash
