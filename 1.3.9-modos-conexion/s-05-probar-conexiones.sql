@@ -1,4 +1,6 @@
---TODO: header
+--@Autor: Navarrete Zamora Aldo Yael y Diego Ignacio Nuñez Hernandez
+--@Fecha creación: 07/06/2024 TODO:
+--@Descripción: Probar conexiones
 
 whenever sqlerror exit rollback;
 

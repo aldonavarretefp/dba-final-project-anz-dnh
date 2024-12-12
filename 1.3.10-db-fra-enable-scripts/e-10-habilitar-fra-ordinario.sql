@@ -1,4 +1,4 @@
---@AUtor: Aldo Navarrete y Diego Nuñez
+--@Autor: Aldo Navarrete y Diego Nuñez
 --@Fecha: 2024-12-1
 --@Descripción: Script para habilitar la FRA en una base de datos Oracle 19c
 

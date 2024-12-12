@@ -1,4 +1,8 @@
 #!/bin/bash
+# @Autor: Diego Ignacio Núñez Hernández, Aldo Yael Navarrete Zamora
+# @Fecha: 28/11/2024
+# @Descripcion: Mueve los archivos de control a la FRA
+
 set -e
 sqlplus sys/system1 as sysdba <<EOF
 shutdown immediate;

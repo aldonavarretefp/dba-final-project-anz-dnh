@@ -1,3 +1,6 @@
+--@Autor: Aldo Navarrete y Diego Nuñez
+--@Fecha: 2024-12-1
+--@Descripción: Script para habilitar Flashback y configurar el tiempo de retención de los datos en la FRA
 
 connect sys/system1 as sysdba;
 

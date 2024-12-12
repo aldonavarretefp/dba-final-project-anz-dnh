@@ -1,3 +1,7 @@
+--@Autor: Aldo Navarrete y Diego Nuñez
+--@Fecha: 2024-12-1
+--@Descripción: Script para mover los redo logs a la FRA
+
 select * from v$controlfile;
 select * from v$logfile;
 

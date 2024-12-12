@@ -1,8 +1,8 @@
 #!/bin/bash
-# @Autor: TODO
-# @Fecha: 03/06/2024 TODO
-# @Descripcion: realiza multiplexado del control file TODO
-#Correrse con el usuario ORACLE
+# @Autor: Diego Ignacio Núñez Hernández, Aldo Yael Navarrete Zamora
+# @Fecha: 03/06/2024
+# @Descripcion: Multiplexa el control file de la base de datos FREE 
+# Correrse con el usuario ORACLE
 
 set -e
 

@@ -1,4 +1,7 @@
 #!/bin/bash
+# @Autor: Diego Ignacio Núñez Hernández, Aldo Yael Navarrete Zamora
+# @Fecha: 28/11/2024
+# @Descripcion: Elimina los redologs de la base de datos FREE
 
 set -e
 echo "Eliminando redologs"
